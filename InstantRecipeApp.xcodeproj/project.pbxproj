@@ -13,6 +13,9 @@
 		EC9796362B85D594002EFDC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9796352B85D594002EFDC0 /* Preview Assets.xcassets */; };
 		EC9796382B85D594002EFDC0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796372B85D594002EFDC0 /* Persistence.swift */; };
 		EC97963B2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC9796392B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld */; };
+		EC9796452B85D610002EFDC0 /* IRALogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796442B85D610002EFDC0 /* IRALogInView.swift */; };
+		EC9796472B85D664002EFDC0 /* IRALogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796462B85D664002EFDC0 /* IRALogInViewModel.swift */; };
+		EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		EC9796352B85D594002EFDC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC9796372B85D594002EFDC0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		EC97963A2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstantRecipeApp.xcdatamodel; sourceTree = "<group>"; };
+		EC9796442B85D610002EFDC0 /* IRALogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRALogInView.swift; sourceTree = "<group>"; };
+		EC9796462B85D664002EFDC0 /* IRALogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRALogInViewModel.swift; sourceTree = "<group>"; };
+		EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,9 @@
 		EC97962D2B85D592002EFDC0 /* InstantRecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				EC9796432B85D5E9002EFDC0 /* Models */,
+				EC9796422B85D5DB002EFDC0 /* ViewModels */,
+				EC9796412B85D5C8002EFDC0 /* View */,
 				EC97962E2B85D592002EFDC0 /* InstantRecipeAppApp.swift */,
 				EC9796302B85D592002EFDC0 /* ContentView.swift */,
 				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
@@ -71,6 +80,30 @@
 				EC9796352B85D594002EFDC0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EC9796412B85D5C8002EFDC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC9796442B85D610002EFDC0 /* IRALogInView.swift */,
+				EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC9796422B85D5DB002EFDC0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EC9796462B85D664002EFDC0 /* IRALogInViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EC9796432B85D5E9002EFDC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +179,10 @@
 				EC9796382B85D594002EFDC0 /* Persistence.swift in Sources */,
 				EC9796312B85D592002EFDC0 /* ContentView.swift in Sources */,
 				EC97962F2B85D592002EFDC0 /* InstantRecipeAppApp.swift in Sources */,
+				EC9796472B85D664002EFDC0 /* IRALogInViewModel.swift in Sources */,
+				EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */,
 				EC97963B2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld in Sources */,
+				EC9796452B85D610002EFDC0 /* IRALogInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

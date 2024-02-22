@@ -13,7 +13,7 @@ struct InstantRecipeAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            IRAOnboardingView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
