@@ -1,0 +1,103 @@
+//
+//  IRACustomTextFieldView.swift
+//  InstantRecipeApp
+//
+//  Created by Suraj Chand on 23/02/2024.
+//
+
+import SwiftUI
+
+struct IRACustomTextFieldView: View {
+    var prefixImage: String
+    var textFieldLabel: String
+    var isPasswordField: Bool = false
+    var isError: Bool = false
+    var errorText: String = ""
+    @Binding var formTextField: String
+    
+    init(
+        prefixImage: String,
+        textFieldLabel: String,
+        isPasswordField: Bool = false,
+        isError: Bool = false,
+        errorText: String = "",
+        fieldText: Binding<String>
+    ) {
+        self.prefixImage = prefixImage
+        self.textFieldLabel = textFieldLabel
+        self.isPasswordField = isPasswordField
+        self.isError = isError
+        self.errorText = errorText
+        self._formTextField = fieldText
+    }
+    
+    @State private var isPasswordVisible = false
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: prefixImage)
+                    .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
+                
+                if isPasswordField {
+                    if isPasswordVisible {
+                        TextField(textFieldLabel, text: $formTextField)
+                    } else {
+                        SecureField(textFieldLabel, text: $formTextField)
+                    }
+                    
+                    Button(action: {
+                        isPasswordVisible.toggle()
+                    }) {
+                        Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                            .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
+                    }
+                } else {
+                    TextField(textFieldLabel, text: $formTextField)
+                }
+            }
+            .padding(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 32)
+                    .stroke(Color(UIColor(hex: isError ? "#FF6464" : "#D0DBEA")), lineWidth: 2)
+            )
+            if isError {
+                Text(errorText)
+                    .font(.caption)
+                    .foregroundColor(Color(UIColor(hex: "#FF6464")))
+                    .padding(.horizontal, 18)
+                    .padding(.vertical, 4)
+            }
+        }
+    }
+}
+
+struct IRACustomTextFieldView_Previews: PreviewProvider {
+    @State static var email: String = ""
+    
+    static var previews: some View {
+        IRACustomTextFieldView(
+            prefixImage: "envelope.fill",
+            textFieldLabel: "Label",
+            isPasswordField: false,
+            isError: false,
+            errorText: "Error message",
+            fieldText: $email
+        )
+        .padding()
+    }
+}
+
+//#Preview {
+//    @State var email: String = ""
+//    
+//    IRACustomTextFieldView(
+//        prefixImage: "envelope.fill",
+//        textFieldLabel: "Label",
+//        isPasswordField: false,
+//        isError: false,
+//        errorText: "Error message",
+//        fieldText: $email
+//    )
+//    .padding()
+//}

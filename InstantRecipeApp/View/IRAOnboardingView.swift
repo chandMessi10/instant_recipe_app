@@ -35,16 +35,10 @@ struct IRAOnboardingView: View {
                         .fontWeight(.semibold)
                         .padding(.bottom, 72)
                     
-                    NavigationLink(destination: IRALoginView()) {
-                        Text("Get Started")
-                            .font(.system(size: 15))
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color(UIColor(hex: "#1FCC79")))
-                            .foregroundColor(.white)
-                            .cornerRadius(32)
-                    }
+                    IRACustomNavigationView(
+                        destination: IRASignInView(),
+                        buttonText: "Get Started"
+                    )
                 }
                 .padding(.horizontal, 16)
             }
