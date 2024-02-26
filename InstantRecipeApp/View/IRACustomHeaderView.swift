@@ -22,7 +22,7 @@ struct IRACustomHeaderView: View {
                 .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
                 .font(.title)
                 .fontWeight(.bold)
-                .padding(.top)
+                .padding(.bottom, 8)
             
             Text(headerSubTitle)
                 .foregroundColor(Color(UIColor(hex: "#9FA5C0")))

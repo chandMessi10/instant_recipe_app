@@ -12,7 +12,7 @@ struct IRACustomTextFieldView: View {
     var textFieldLabel: String
     var isPasswordField: Bool = false
     var isError: Bool = false
-    var errorText: String = ""
+    @Binding var errorText: String
     @Binding var formTextField: String
     
     init(
@@ -20,14 +20,14 @@ struct IRACustomTextFieldView: View {
         textFieldLabel: String,
         isPasswordField: Bool = false,
         isError: Bool = false,
-        errorText: String = "",
+        errorText: Binding<String>,
         fieldText: Binding<String>
     ) {
         self.prefixImage = prefixImage
         self.textFieldLabel = textFieldLabel
         self.isPasswordField = isPasswordField
         self.isError = isError
-        self.errorText = errorText
+        self._errorText = errorText
         self._formTextField = fieldText
     }
     
@@ -74,6 +74,7 @@ struct IRACustomTextFieldView: View {
 
 struct IRACustomTextFieldView_Previews: PreviewProvider {
     @State static var email: String = ""
+    @State static var emailError: String = ""
     
     static var previews: some View {
         IRACustomTextFieldView(
@@ -81,7 +82,7 @@ struct IRACustomTextFieldView_Previews: PreviewProvider {
             textFieldLabel: "Label",
             isPasswordField: false,
             isError: false,
-            errorText: "Error message",
+            errorText: $emailError,
             fieldText: $email
         )
         .padding()

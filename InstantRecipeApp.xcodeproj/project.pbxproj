@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */; };
 		EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */; };
 		EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */; };
+		EC466D192B8A6806009AE28D /* IRABackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC466D182B8A6806009AE28D /* IRABackButtonView.swift */; };
 		EC86CE852B88AD60000EDCC0 /* IRASignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86CE842B88AD60000EDCC0 /* IRASignUpView.swift */; };
 		EC86CE872B88ADB9000EDCC0 /* IRAForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86CE862B88ADB9000EDCC0 /* IRAForgotPasswordView.swift */; };
 		EC86CE892B88ADD0000EDCC0 /* IRAOtpVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86CE882B88ADD0000EDCC0 /* IRAOtpVerificationView.swift */; };
@@ -22,13 +24,20 @@
 		EC9796382B85D594002EFDC0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796372B85D594002EFDC0 /* Persistence.swift */; };
 		EC97963B2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC9796392B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld */; };
 		EC9796452B85D610002EFDC0 /* IRASignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796442B85D610002EFDC0 /* IRASignInView.swift */; };
-		EC9796472B85D664002EFDC0 /* IRASignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796462B85D664002EFDC0 /* IRASignInViewModel.swift */; };
+		EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796462B85D664002EFDC0 /* IRAAuthViewModel.swift */; };
 		EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */; };
+		EC9D5B8F2B8C6E180040511C /* IRAOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9D5B8E2B8C6E180040511C /* IRAOTPViewModel.swift */; };
+		ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */; };
+		ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */ = {isa = PBXBuildFile; productRef = ECF871912B8BB7B9006D1027 /* OTPView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0601E419B496E778D07F50E5 /* Pods-InstantRecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantRecipeApp.release.xcconfig"; path = "Target Support Files/Pods-InstantRecipeApp/Pods-InstantRecipeApp.release.xcconfig"; sourceTree = "<group>"; };
+		4D1587413A6F69ADEA4663BB /* Pods-InstantRecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantRecipeApp.debug.xcconfig"; path = "Target Support Files/Pods-InstantRecipeApp/Pods-InstantRecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstantRecipeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomNavigationView.swift; sourceTree = "<group>"; };
 		EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAHomeView.swift; sourceTree = "<group>"; };
+		EC466D182B8A6806009AE28D /* IRABackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRABackButtonView.swift; sourceTree = "<group>"; };
 		EC86CE842B88AD60000EDCC0 /* IRASignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASignUpView.swift; sourceTree = "<group>"; };
 		EC86CE862B88ADB9000EDCC0 /* IRAForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAForgotPasswordView.swift; sourceTree = "<group>"; };
 		EC86CE882B88ADD0000EDCC0 /* IRAOtpVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOtpVerificationView.swift; sourceTree = "<group>"; };
@@ -43,8 +52,10 @@
 		EC9796372B85D594002EFDC0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		EC97963A2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstantRecipeApp.xcdatamodel; sourceTree = "<group>"; };
 		EC9796442B85D610002EFDC0 /* IRASignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASignInView.swift; sourceTree = "<group>"; };
-		EC9796462B85D664002EFDC0 /* IRASignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASignInViewModel.swift; sourceTree = "<group>"; };
+		EC9796462B85D664002EFDC0 /* IRAAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAAuthViewModel.swift; sourceTree = "<group>"; };
 		EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOnboardingView.swift; sourceTree = "<group>"; };
+		EC9D5B8E2B8C6E180040511C /* IRAOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOTPViewModel.swift; sourceTree = "<group>"; };
+		ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,17 +63,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */,
+				ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EFBA23ED87F37D7B1A2DAE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D1587413A6F69ADEA4663BB /* Pods-InstantRecipeApp.debug.xcconfig */,
+				0601E419B496E778D07F50E5 /* Pods-InstantRecipeApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C5156D35E4531CD0DCF39565 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC9796222B85D592002EFDC0 = {
 			isa = PBXGroup;
 			children = (
 				EC97962D2B85D592002EFDC0 /* InstantRecipeApp */,
 				EC97962C2B85D592002EFDC0 /* Products */,
+				7EFBA23ED87F37D7B1A2DAE1 /* Pods */,
+				C5156D35E4531CD0DCF39565 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +143,8 @@
 				EC86CE8A2B88AE0F000EDCC0 /* IRADashboardView.swift */,
 				EC86CE8C2B88CDC9000EDCC0 /* IRACustomHeaderView.swift */,
 				EC86CE8E2B88D033000EDCC0 /* IRACustomTextFieldView.swift */,
+				EC466D182B8A6806009AE28D /* IRABackButtonView.swift */,
+				ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,7 +152,8 @@
 		EC9796422B85D5DB002EFDC0 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				EC9796462B85D664002EFDC0 /* IRASignInViewModel.swift */,
+				EC9796462B85D664002EFDC0 /* IRAAuthViewModel.swift */,
+				EC9D5B8E2B8C6E180040511C /* IRAOTPViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -137,6 +172,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC97963E2B85D594002EFDC0 /* Build configuration list for PBXNativeTarget "InstantRecipeApp" */;
 			buildPhases = (
+				5D688B5D77185DD6293BAF50 /* [CP] Check Pods Manifest.lock */,
 				EC9796272B85D592002EFDC0 /* Sources */,
 				EC9796282B85D592002EFDC0 /* Frameworks */,
 				EC9796292B85D592002EFDC0 /* Resources */,
@@ -146,6 +182,9 @@
 			dependencies = (
 			);
 			name = InstantRecipeApp;
+			packageProductDependencies = (
+				ECF871912B8BB7B9006D1027 /* OTPView */,
+			);
 			productName = InstantRecipeApp;
 			productReference = EC97962B2B85D592002EFDC0 /* InstantRecipeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +213,9 @@
 				Base,
 			);
 			mainGroup = EC9796222B85D592002EFDC0;
+			packageReferences = (
+				ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */,
+			);
 			productRefGroup = EC97962C2B85D592002EFDC0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -195,6 +237,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5D688B5D77185DD6293BAF50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstantRecipeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC9796272B85D592002EFDC0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -206,15 +273,18 @@
 				EC9796312B85D592002EFDC0 /* ContentView.swift in Sources */,
 				EC86CE872B88ADB9000EDCC0 /* IRAForgotPasswordView.swift in Sources */,
 				EC86CE8D2B88CDC9000EDCC0 /* IRACustomHeaderView.swift in Sources */,
+				EC466D192B8A6806009AE28D /* IRABackButtonView.swift in Sources */,
+				EC9D5B8F2B8C6E180040511C /* IRAOTPViewModel.swift in Sources */,
 				EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */,
 				EC86CE8F2B88D033000EDCC0 /* IRACustomTextFieldView.swift in Sources */,
 				EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */,
 				EC97962F2B85D592002EFDC0 /* InstantRecipeAppApp.swift in Sources */,
-				EC9796472B85D664002EFDC0 /* IRASignInViewModel.swift in Sources */,
+				EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */,
 				EC86CE8B2B88AE0F000EDCC0 /* IRADashboardView.swift in Sources */,
 				EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */,
 				EC97963B2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld in Sources */,
 				EC9796452B85D610002EFDC0 /* IRASignInView.swift in Sources */,
+				ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +412,7 @@
 		};
 		EC97963F2B85D594002EFDC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D1587413A6F69ADEA4663BB /* Pods-InstantRecipeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -371,6 +442,7 @@
 		};
 		EC9796402B85D594002EFDC0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0601E419B496E778D07F50E5 /* Pods-InstantRecipeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -420,6 +492,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mukeshsolanki/otpview-swiftui.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ECF871912B8BB7B9006D1027 /* OTPView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */;
+			productName = OTPView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EC9796392B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld */ = {

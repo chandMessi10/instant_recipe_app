@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct IRASignInView: View {
-    @StateObject var viewModel: IRASignInViewModel
+    @StateObject var viewModel: IRAAuthViewModel
     @State private var isPasswordVisible = false
     
     init() {
-        self._viewModel = StateObject(wrappedValue: IRASignInViewModel())
+        self._viewModel = StateObject(wrappedValue: IRAAuthViewModel())
     }
     
     var body: some View {
@@ -26,22 +26,32 @@ struct IRASignInView: View {
                 IRACustomTextFieldView(
                     prefixImage: "envelope.fill",
                     textFieldLabel: "Email",
-                    isError: false,
+                    isError: viewModel.emailError == "" ? false : true,
+                    errorText: $viewModel.emailError,
                     fieldText: $viewModel.email
-                ).padding(.vertical, 8)
+                )
+                .padding(.vertical, 8)
+                .onChange(of: $viewModel.email.wrappedValue) { _, _ in
+                    viewModel.validateEmail()
+                }
                 
                 IRACustomTextFieldView(
                     prefixImage: "lock.fill",
                     textFieldLabel: "Password",
                     isPasswordField: true,
-                    isError: false,
+                    isError: viewModel.passwordError == "" ? false : true,
+                    errorText: $viewModel.passwordError,
                     fieldText: $viewModel.password
-                ).padding(.vertical, 8)
+                )
+                .padding(.vertical, 8)
+                .onChange(of: $viewModel.password.wrappedValue) { _, _ in
+                    viewModel.validateSignInPassword()
+                }
                 
                 HStack {
                     Spacer()
                     NavigationLink(
-                        destination: IRAForgotPasswordView()
+                        destination: IRAOtpVerificationView()
                     ) {
                         Text("Forgot Password?")
                             .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
@@ -57,7 +67,7 @@ struct IRASignInView: View {
                     action: {
                         viewModel.login()
                     },
-                    isButtonDisabled: (viewModel.emailError != nil || viewModel.passwordError != nil)
+                    isButtonDisabled: (viewModel.emailError != "" || viewModel.passwordError != "")
                 )
                 
                 NavigationLink(
