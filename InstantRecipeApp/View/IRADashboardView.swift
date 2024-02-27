@@ -9,7 +9,30 @@ import SwiftUI
 
 struct IRADashboardView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            TabView {
+                IRAHomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                IRAProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person.fill")
+                    }
+            }
+            .onAppear {
+                // correct the transparency bug for Tab bars
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithOpaqueBackground()
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                // correct the transparency bug for Navigation bars
+                let navigationBarAppearance = UINavigationBarAppearance()
+                navigationBarAppearance.configureWithOpaqueBackground()
+                UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+            }
+            .accentColor(Color(UIColor(hex: "#1FCC79")))
+        }
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -30,6 +30,8 @@
 		ECA157142B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157132B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift */; };
 		ECA157162B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157152B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift */; };
 		ECA157182B8E31BD0031B57D /* IRAResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */; };
+		ECA1571A2B8E51360031B57D /* IRAProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157192B8E51360031B57D /* IRAProfileView.swift */; };
+		ECA1571C2B8E5CB70031B57D /* IRASearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */; };
 		ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */; };
 		ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */ = {isa = PBXBuildFile; productRef = ECF871912B8BB7B9006D1027 /* OTPView */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		ECA157132B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAPasswordCriteriaListView.swift; sourceTree = "<group>"; };
 		ECA157152B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAPasswordCriteriaItemView.swift; sourceTree = "<group>"; };
 		ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAResetPasswordView.swift; sourceTree = "<group>"; };
+		ECA157192B8E51360031B57D /* IRAProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAProfileView.swift; sourceTree = "<group>"; };
+		ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASearchView.swift; sourceTree = "<group>"; };
 		ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +149,8 @@
 				EC86CE882B88ADD0000EDCC0 /* IRAOtpVerificationView.swift */,
 				EC86CE8A2B88AE0F000EDCC0 /* IRADashboardView.swift */,
 				ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */,
+				ECA157192B8E51360031B57D /* IRAProfileView.swift */,
+				ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				ECA157142B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift in Sources */,
 				EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */,
 				ECA157162B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift in Sources */,
+				ECA1571C2B8E5CB70031B57D /* IRASearchView.swift in Sources */,
 				EC97962F2B85D592002EFDC0 /* InstantRecipeAppApp.swift in Sources */,
 				EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */,
 				EC86CE8B2B88AE0F000EDCC0 /* IRADashboardView.swift in Sources */,
@@ -313,6 +320,7 @@
 				ECA157182B8E31BD0031B57D /* IRAResetPasswordView.swift in Sources */,
 				EC9796452B85D610002EFDC0 /* IRASignInView.swift in Sources */,
 				ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */,
+				ECA1571A2B8E51360031B57D /* IRAProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
