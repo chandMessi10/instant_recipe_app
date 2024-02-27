@@ -27,6 +27,9 @@
 		EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796462B85D664002EFDC0 /* IRAAuthViewModel.swift */; };
 		EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */; };
 		EC9D5B8F2B8C6E180040511C /* IRAOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9D5B8E2B8C6E180040511C /* IRAOTPViewModel.swift */; };
+		ECA157142B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157132B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift */; };
+		ECA157162B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157152B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift */; };
+		ECA157182B8E31BD0031B57D /* IRAResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */; };
 		ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */; };
 		ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */ = {isa = PBXBuildFile; productRef = ECF871912B8BB7B9006D1027 /* OTPView */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,9 @@
 		EC9796462B85D664002EFDC0 /* IRAAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAAuthViewModel.swift; sourceTree = "<group>"; };
 		EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOnboardingView.swift; sourceTree = "<group>"; };
 		EC9D5B8E2B8C6E180040511C /* IRAOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOTPViewModel.swift; sourceTree = "<group>"; };
+		ECA157132B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAPasswordCriteriaListView.swift; sourceTree = "<group>"; };
+		ECA157152B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAPasswordCriteriaItemView.swift; sourceTree = "<group>"; };
+		ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAResetPasswordView.swift; sourceTree = "<group>"; };
 		ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,13 +115,11 @@
 		EC97962D2B85D592002EFDC0 /* InstantRecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				ECA157122B8E2B710031B57D /* Other */,
+				ECA157112B8E2B1C0031B57D /* SharedView */,
 				EC9796432B85D5E9002EFDC0 /* Models */,
 				EC9796422B85D5DB002EFDC0 /* ViewModels */,
 				EC9796412B85D5C8002EFDC0 /* View */,
-				EC97962E2B85D592002EFDC0 /* InstantRecipeAppApp.swift */,
-				EC9796302B85D592002EFDC0 /* ContentView.swift */,
-				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
-				EC9796372B85D594002EFDC0 /* Persistence.swift */,
 				EC9796392B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld */,
 				EC9796342B85D594002EFDC0 /* Preview Content */,
 			);
@@ -135,16 +139,12 @@
 			children = (
 				EC9796442B85D610002EFDC0 /* IRASignInView.swift */,
 				EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */,
-				EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */,
 				EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */,
 				EC86CE842B88AD60000EDCC0 /* IRASignUpView.swift */,
 				EC86CE862B88ADB9000EDCC0 /* IRAForgotPasswordView.swift */,
 				EC86CE882B88ADD0000EDCC0 /* IRAOtpVerificationView.swift */,
 				EC86CE8A2B88AE0F000EDCC0 /* IRADashboardView.swift */,
-				EC86CE8C2B88CDC9000EDCC0 /* IRACustomHeaderView.swift */,
-				EC86CE8E2B88D033000EDCC0 /* IRACustomTextFieldView.swift */,
-				EC466D182B8A6806009AE28D /* IRABackButtonView.swift */,
-				ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */,
+				ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -163,6 +163,31 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ECA157112B8E2B1C0031B57D /* SharedView */ = {
+			isa = PBXGroup;
+			children = (
+				EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */,
+				EC86CE8C2B88CDC9000EDCC0 /* IRACustomHeaderView.swift */,
+				EC86CE8E2B88D033000EDCC0 /* IRACustomTextFieldView.swift */,
+				EC466D182B8A6806009AE28D /* IRABackButtonView.swift */,
+				ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */,
+				ECA157132B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift */,
+				ECA157152B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift */,
+			);
+			path = SharedView;
+			sourceTree = "<group>";
+		};
+		ECA157122B8E2B710031B57D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				EC97962E2B85D592002EFDC0 /* InstantRecipeAppApp.swift */,
+				EC9796302B85D592002EFDC0 /* ContentView.swift */,
+				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
+				EC9796372B85D594002EFDC0 /* Persistence.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,12 +302,15 @@
 				EC9D5B8F2B8C6E180040511C /* IRAOTPViewModel.swift in Sources */,
 				EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */,
 				EC86CE8F2B88D033000EDCC0 /* IRACustomTextFieldView.swift in Sources */,
+				ECA157142B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift in Sources */,
 				EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */,
+				ECA157162B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift in Sources */,
 				EC97962F2B85D592002EFDC0 /* InstantRecipeAppApp.swift in Sources */,
 				EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */,
 				EC86CE8B2B88AE0F000EDCC0 /* IRADashboardView.swift in Sources */,
 				EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */,
 				EC97963B2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld in Sources */,
+				ECA157182B8E31BD0031B57D /* IRAResetPasswordView.swift in Sources */,
 				EC9796452B85D610002EFDC0 /* IRASignInView.swift in Sources */,
 				ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */,
 			);

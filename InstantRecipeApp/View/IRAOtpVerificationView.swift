@@ -16,7 +16,7 @@ struct IRAOtpVerificationView: View {
     }
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 IRACustomHeaderView(
                     headerTitle: "Check your email",
@@ -69,10 +69,10 @@ struct IRAOtpVerificationView: View {
                 )
                 Spacer()
             }
-        }
-        .padding()
-        .navigationBarBackButtonHidden()
-        .navigationBarItems(leading: IRABackButtonView())
+            .padding()
+//            .navigationBarItems(leading: IRABackButtonView())
+//        }
+//        .navigationBarBackButtonHidden()
     }
 }
 

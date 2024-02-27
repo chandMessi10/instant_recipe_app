@@ -51,7 +51,7 @@ struct IRASignInView: View {
                 HStack {
                     Spacer()
                     NavigationLink(
-                        destination: IRAOtpVerificationView()
+                        destination: IRAForgotPasswordView()
                     ) {
                         Text("Forgot Password?")
                             .foregroundColor(Color(UIColor(hex: "#9FA5C0")))

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct IRASignUpView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
     @StateObject var viewModel: IRAAuthViewModel
     @State private var isPasswordVisible = false
     
@@ -18,7 +16,7 @@ struct IRASignUpView: View {
     }
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 IRACustomHeaderView(
                     headerTitle: "Welcome",
@@ -56,7 +54,7 @@ struct IRASignUpView: View {
                 }
                 .padding(.bottom, 16)
                 
-                PasswordRequirementsView(secureFieldText: $viewModel.password)
+                IRAPasswordCriteriaListView(secureFieldText: $viewModel.password)
                     .padding(.bottom, 24)
                 
                 IRACustomNavigationView(
@@ -66,13 +64,12 @@ struct IRASignUpView: View {
                         
                     }
                 )
-                
                 Spacer()
             }
-        }
-        .padding()
-        .navigationBarBackButtonHidden()
-        .navigationBarItems(leading: IRABackButtonView())
+            .padding()
+//            .navigationBarItems(leading: IRABackButtonView())
+//        }
+//        .navigationBarBackButtonHidden()
     }
 }
 
@@ -80,43 +77,3 @@ struct IRASignUpView: View {
     IRASignUpView()
 }
 
-struct PasswordRequirementsView: View {
-    @Binding var secureFieldText: String
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            PasswordRequirementView(
-                text: "At least 8 characters",
-                isFulfilled: secureFieldText.count >= 8
-            )
-            PasswordRequirementView(
-                text: "At least one uppercase letter",
-                isFulfilled: secureFieldText.rangeOfCharacter(from: .uppercaseLetters) != nil
-            )
-            PasswordRequirementView(
-                text: "At least one lowercase letter",
-                isFulfilled: secureFieldText.rangeOfCharacter(from: .lowercaseLetters) != nil
-            )
-            PasswordRequirementView(
-                text: "At least one number",
-                isFulfilled: secureFieldText.rangeOfCharacter(from: .decimalDigits) != nil
-            )
-        }
-    }
-}
-
-struct PasswordRequirementView: View {
-    var text: String
-    var isFulfilled: Bool
-    
-    var body: some View {
-        HStack {
-            Image(systemName: isFulfilled ? "checkmark.circle.fill" : "xmark.circle.fill")
-                .font(.system(size: 15))
-                .fontWeight(.medium)
-                .foregroundColor(isFulfilled ? .green : .red)
-            Text(text).foregroundColor(Color(UIColor(hex: "#2E3E5C")))
-            Spacer()
-        }
-    }
-}
