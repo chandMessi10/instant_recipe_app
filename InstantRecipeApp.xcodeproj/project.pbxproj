@@ -119,11 +119,10 @@
 		EC97962D2B85D592002EFDC0 /* InstantRecipeApp */ = {
 			isa = PBXGroup;
 			children = (
-				ECA157122B8E2B710031B57D /* Other */,
-				ECA157112B8E2B1C0031B57D /* SharedView */,
-				EC9796432B85D5E9002EFDC0 /* Models */,
-				EC9796422B85D5DB002EFDC0 /* ViewModels */,
-				EC9796412B85D5C8002EFDC0 /* View */,
+				ECA1571F2B8F14A40031B57D /* Code */,
+				ECA1571E2B8F146F0031B57D /* Config */,
+				ECA1571D2B8F14470031B57D /* Resources */,
+				ECA157122B8E2B710031B57D /* SupportingFiles */,
 				EC9796392B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld */,
 				EC9796342B85D594002EFDC0 /* Preview Content */,
 			);
@@ -138,24 +137,99 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		EC9796412B85D5C8002EFDC0 /* View */ = {
+		ECA157122B8E2B710031B57D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EC97962E2B85D592002EFDC0 /* InstantRecipeAppApp.swift */,
+				EC9796302B85D592002EFDC0 /* ContentView.swift */,
+				EC9796372B85D594002EFDC0 /* Persistence.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		ECA1571D2B8F14470031B57D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ECA1571E2B8F146F0031B57D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		ECA1571F2B8F14A40031B57D /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				ECA157212B8F14B00031B57D /* Utilities */,
+				ECA157202B8F14AA0031B57D /* Features */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		ECA157202B8F14AA0031B57D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1572F2B8F16CA0031B57D /* Profile */,
+				ECA1572D2B8F16B80031B57D /* Dashboard */,
+				ECA157292B8F16390031B57D /* Common */,
+				ECA157242B8F14DD0031B57D /* Home */,
+				ECA157232B8F14CA0031B57D /* Auth */,
+				ECA157222B8F14C30031B57D /* Onboarding */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		ECA157212B8F14B00031B57D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		ECA157222B8F14C30031B57D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				ECA157272B8F15C10031B57D /* Screens */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		ECA157232B8F14CA0031B57D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1572C2B8F168E0031B57D /* Views */,
+				ECA157262B8F151B0031B57D /* ViewModels */,
+				ECA157252B8F15100031B57D /* Screens */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ECA157242B8F14DD0031B57D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ECA157282B8F15D50031B57D /* Screens */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ECA157252B8F15100031B57D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				EC9796442B85D610002EFDC0 /* IRASignInView.swift */,
-				EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */,
-				EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */,
 				EC86CE842B88AD60000EDCC0 /* IRASignUpView.swift */,
 				EC86CE862B88ADB9000EDCC0 /* IRAForgotPasswordView.swift */,
 				EC86CE882B88ADD0000EDCC0 /* IRAOtpVerificationView.swift */,
-				EC86CE8A2B88AE0F000EDCC0 /* IRADashboardView.swift */,
 				ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */,
-				ECA157192B8E51360031B57D /* IRAProfileView.swift */,
-				ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */,
 			);
-			path = View;
+			path = Screens;
 			sourceTree = "<group>";
 		};
-		EC9796422B85D5DB002EFDC0 /* ViewModels */ = {
+		ECA157262B8F151B0031B57D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				EC9796462B85D664002EFDC0 /* IRAAuthViewModel.swift */,
@@ -164,14 +238,32 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		EC9796432B85D5E9002EFDC0 /* Models */ = {
+		ECA157272B8F15C10031B57D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EC9796482B86710C002EFDC0 /* IRAOnboardingView.swift */,
 			);
-			path = Models;
+			path = Screens;
 			sourceTree = "<group>";
 		};
-		ECA157112B8E2B1C0031B57D /* SharedView */ = {
+		ECA157282B8F15D50031B57D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */,
+				EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		ECA157292B8F16390031B57D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1572A2B8F16410031B57D /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ECA1572A2B8F16410031B57D /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */,
@@ -179,21 +271,49 @@
 				EC86CE8E2B88D033000EDCC0 /* IRACustomTextFieldView.swift */,
 				EC466D182B8A6806009AE28D /* IRABackButtonView.swift */,
 				ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ECA1572C2B8F168E0031B57D /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				ECA157132B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift */,
 				ECA157152B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift */,
 			);
-			path = SharedView;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		ECA157122B8E2B710031B57D /* Other */ = {
+		ECA1572D2B8F16B80031B57D /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				EC97962E2B85D592002EFDC0 /* InstantRecipeAppApp.swift */,
-				EC9796302B85D592002EFDC0 /* ContentView.swift */,
-				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
-				EC9796372B85D594002EFDC0 /* Persistence.swift */,
+				ECA1572E2B8F16C00031B57D /* Screens */,
 			);
-			path = Other;
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		ECA1572E2B8F16C00031B57D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				EC86CE8A2B88AE0F000EDCC0 /* IRADashboardView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		ECA1572F2B8F16CA0031B57D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ECA157302B8F16D00031B57D /* Screens */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		ECA157302B8F16D00031B57D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				ECA157192B8E51360031B57D /* IRAProfileView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
