@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct IRAHomeView: View {
-    @State private var isTapped: Bool = false
     @State private var selectedOptions: Set<String> = ["All"]
     let options = ["All", "Food", "Drink"]
     

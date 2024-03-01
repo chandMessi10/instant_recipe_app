@@ -10,6 +10,7 @@
 		642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */; };
 		EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */; };
 		EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */; };
+		EC1B7E892B923D10005E0C30 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = EC1B7E882B923D10005E0C30 /* Sliders */; };
 		EC466D192B8A6806009AE28D /* IRABackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC466D182B8A6806009AE28D /* IRABackButtonView.swift */; };
 		EC86CE852B88AD60000EDCC0 /* IRASignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86CE842B88AD60000EDCC0 /* IRASignUpView.swift */; };
 		EC86CE872B88ADB9000EDCC0 /* IRAForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86CE862B88ADB9000EDCC0 /* IRAForgotPasswordView.swift */; };
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1B7E892B923D10005E0C30 /* Sliders in Frameworks */,
 				642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */,
 				ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */,
 			);
@@ -335,6 +337,7 @@
 			name = InstantRecipeApp;
 			packageProductDependencies = (
 				ECF871912B8BB7B9006D1027 /* OTPView */,
+				EC1B7E882B923D10005E0C30 /* Sliders */,
 			);
 			productName = InstantRecipeApp;
 			productReference = EC97962B2B85D592002EFDC0 /* InstantRecipeApp.app */;
@@ -366,6 +369,7 @@
 			mainGroup = EC9796222B85D592002EFDC0;
 			packageReferences = (
 				ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */,
+				EC1B7E872B923D10005E0C30 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 			);
 			productRefGroup = EC97962C2B85D592002EFDC0 /* Products */;
 			projectDirPath = "";
@@ -650,6 +654,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EC1B7E872B923D10005E0C30 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:spacenation/swiftui-sliders.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mukeshsolanki/otpview-swiftui.git";
@@ -661,6 +673,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EC1B7E882B923D10005E0C30 /* Sliders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC1B7E872B923D10005E0C30 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
+			productName = Sliders;
+		};
 		ECF871912B8BB7B9006D1027 /* OTPView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */;

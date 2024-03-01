@@ -12,17 +12,21 @@ struct IRACustomButton: View {
     var action: (() -> Void)
     var isButtonDisabled: Bool = false
     var hasBorder: Bool = false
+    var isSecondaryButton: Bool = false
+    
     
     init(
         buttonText: String,
         action: @escaping (() -> Void),
         isButtonDisabled: Bool = false,
-        hasBorder: Bool = false
+        hasBorder: Bool = false,
+        isSecondaryButton: Bool = false
     ) {
         self.buttonText = buttonText
         self.action = action
         self.isButtonDisabled = isButtonDisabled
         self.hasBorder = hasBorder
+        self.isSecondaryButton = isSecondaryButton
     }
     
     var body: some View {
@@ -36,8 +40,8 @@ struct IRACustomButton: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(hasBorder ? Color.white : Color(UIColor(hex: "#1FCC79")))
-                    .foregroundColor(hasBorder ? Color(UIColor(hex: "#9FA5C0")) : Color.white)
+                    .background(isSecondaryButton ?  Color(UIColor(hex: "#F4F5F7")) : (hasBorder ? Color.white : Color(UIColor(hex: "#1FCC79"))))
+                    .foregroundColor(isSecondaryButton ? Color(UIColor(hex: "#2E3E5C")) : (hasBorder ? Color(UIColor(hex: "#9FA5C0")) : Color.white))
                     .cornerRadius(32)
                     .overlay(
                         RoundedRectangle(cornerRadius: 32)
@@ -53,6 +57,7 @@ struct IRACustomButton: View {
         buttonText: "Test",
         action: {},
         isButtonDisabled: false,
-        hasBorder: true
+        hasBorder: false,
+        isSecondaryButton: true
     )
 }
