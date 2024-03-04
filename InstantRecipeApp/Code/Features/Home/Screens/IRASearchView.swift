@@ -183,7 +183,7 @@ struct IRASearchView: View {
 }
 
 #Preview {
-    IRASearchView().sheetView()
+    IRASearchView()
 }
 
 /// Customizable UISlider Wrapper for SwiftUI

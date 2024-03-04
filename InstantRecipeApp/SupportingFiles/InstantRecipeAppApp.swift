@@ -15,6 +15,7 @@ struct InstantRecipeAppApp: App {
         WindowGroup {
             IRAOnboardingView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .navigationViewStyle(.stack)
         }
     }
 }
