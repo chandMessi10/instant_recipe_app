@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */; };
+		EC0635B22C220A9C00ED7BFE /* ToastTypeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0635B12C220A9C00ED7BFE /* ToastTypeEnums.swift */; };
 		EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */; };
 		EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */; };
-		EC1B7E892B923D10005E0C30 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = EC1B7E882B923D10005E0C30 /* Sliders */; };
 		EC1B7E8E2B92F1DF005E0C30 /* IRAUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7E8D2B92F1DF005E0C30 /* IRAUIColorExtension.swift */; };
 		EC1B7E912B939A3B005E0C30 /* IRAProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7E902B939A3B005E0C30 /* IRAProfileImageView.swift */; };
 		EC466D192B8A6806009AE28D /* IRABackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC466D182B8A6806009AE28D /* IRABackButtonView.swift */; };
@@ -35,6 +35,12 @@
 		ECA157182B8E31BD0031B57D /* IRAResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */; };
 		ECA1571A2B8E51360031B57D /* IRAProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA157192B8E51360031B57D /* IRAProfileView.swift */; };
 		ECA1571C2B8E5CB70031B57D /* IRASearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */; };
+		ECA1DB512C1E0FA400A8054C /* Appwrite in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1DB502C1E0FA400A8054C /* Appwrite */; };
+		ECA1DB532C1EB91700A8054C /* AppWriteClientConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DB522C1EB91700A8054C /* AppWriteClientConfig.swift */; };
+		ECA1DB562C1EC01300A8054C /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DB552C1EC01300A8054C /* AppEnums.swift */; };
+		ECA1DB582C1ECF7D00A8054C /* IRAToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DB572C1ECF7D00A8054C /* IRAToastView.swift */; };
+		ECA1DB5A2C1F5C8100A8054C /* FocusElementEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DB592C1F5C8100A8054C /* FocusElementEnums.swift */; };
+		ECAEC2002B964C0C00FC9B4B /* IRAAddEditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAEC1FF2B964C0C00FC9B4B /* IRAAddEditRecipeView.swift */; };
 		ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */; };
 		ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */ = {isa = PBXBuildFile; productRef = ECF871912B8BB7B9006D1027 /* OTPView */; };
 /* End PBXBuildFile section */
@@ -43,6 +49,7 @@
 		0601E419B496E778D07F50E5 /* Pods-InstantRecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantRecipeApp.release.xcconfig"; path = "Target Support Files/Pods-InstantRecipeApp/Pods-InstantRecipeApp.release.xcconfig"; sourceTree = "<group>"; };
 		4D1587413A6F69ADEA4663BB /* Pods-InstantRecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantRecipeApp.debug.xcconfig"; path = "Target Support Files/Pods-InstantRecipeApp/Pods-InstantRecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstantRecipeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0635B12C220A9C00ED7BFE /* ToastTypeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTypeEnums.swift; sourceTree = "<group>"; };
 		EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomNavigationView.swift; sourceTree = "<group>"; };
 		EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAHomeView.swift; sourceTree = "<group>"; };
 		EC1B7E8D2B92F1DF005E0C30 /* IRAUIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAUIColorExtension.swift; sourceTree = "<group>"; };
@@ -70,6 +77,11 @@
 		ECA157172B8E31BD0031B57D /* IRAResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAResetPasswordView.swift; sourceTree = "<group>"; };
 		ECA157192B8E51360031B57D /* IRAProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAProfileView.swift; sourceTree = "<group>"; };
 		ECA1571B2B8E5CB70031B57D /* IRASearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASearchView.swift; sourceTree = "<group>"; };
+		ECA1DB522C1EB91700A8054C /* AppWriteClientConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWriteClientConfig.swift; sourceTree = "<group>"; };
+		ECA1DB552C1EC01300A8054C /* AppEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
+		ECA1DB572C1ECF7D00A8054C /* IRAToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAToastView.swift; sourceTree = "<group>"; };
+		ECA1DB592C1F5C8100A8054C /* FocusElementEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusElementEnums.swift; sourceTree = "<group>"; };
+		ECAEC1FF2B964C0C00FC9B4B /* IRAAddEditRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAAddEditRecipeView.swift; sourceTree = "<group>"; };
 		ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,9 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC1B7E892B923D10005E0C30 /* Sliders in Frameworks */,
 				642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */,
 				ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */,
+				ECA1DB512C1E0FA400A8054C /* Appwrite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,22 +153,13 @@
 		EC97962D2B85D592002EFDC0 /* InstantRecipeApp */ = {
 			isa = PBXGroup;
 			children = (
-				ECA1571F2B8F14A40031B57D /* Code */,
-				ECA1571E2B8F146F0031B57D /* Config */,
-				ECA1571D2B8F14470031B57D /* Resources */,
+				ECA157292B8F16390031B57D /* Common */,
+				ECA157202B8F14AA0031B57D /* Features */,
 				ECA157122B8E2B710031B57D /* SupportingFiles */,
+				ECA1571E2B8F146F0031B57D /* Config */,
 				EC9796392B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld */,
-				EC9796342B85D594002EFDC0 /* Preview Content */,
 			);
 			path = InstantRecipeApp;
-			sourceTree = "<group>";
-		};
-		EC9796342B85D594002EFDC0 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				EC9796352B85D594002EFDC0 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		ECA157122B8E2B710031B57D /* SupportingFiles */ = {
@@ -165,40 +168,27 @@
 				EC97962E2B85D592002EFDC0 /* InstantRecipeAppApp.swift */,
 				EC9796302B85D592002EFDC0 /* ContentView.swift */,
 				EC9796372B85D594002EFDC0 /* Persistence.swift */,
+				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
+				EC9796352B85D594002EFDC0 /* Preview Assets.xcassets */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		ECA1571D2B8F14470031B57D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		ECA1571E2B8F146F0031B57D /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				ECA157212B8F14B00031B57D /* Utilities */,
+				ECA1DB522C1EB91700A8054C /* AppWriteClientConfig.swift */,
 			);
 			path = Config;
-			sourceTree = "<group>";
-		};
-		ECA1571F2B8F14A40031B57D /* Code */ = {
-			isa = PBXGroup;
-			children = (
-				ECA157212B8F14B00031B57D /* Utilities */,
-				ECA157202B8F14AA0031B57D /* Features */,
-			);
-			path = Code;
 			sourceTree = "<group>";
 		};
 		ECA157202B8F14AA0031B57D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				ECAEC1FD2B964BF000FC9B4B /* Recipe */,
 				ECA1572F2B8F16CA0031B57D /* Profile */,
 				ECA1572D2B8F16B80031B57D /* Dashboard */,
-				ECA157292B8F16390031B57D /* Common */,
 				ECA157242B8F14DD0031B57D /* Home */,
 				ECA157232B8F14CA0031B57D /* Auth */,
 				ECA157222B8F14C30031B57D /* Onboarding */,
@@ -209,6 +199,7 @@
 		ECA157212B8F14B00031B57D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ECA1DB542C1EC00700A8054C /* Enums */,
 				EC1B7E8C2B92F1BF005E0C30 /* Extensions */,
 			);
 			path = Utilities;
@@ -294,6 +285,7 @@
 				EC86CE8E2B88D033000EDCC0 /* IRACustomTextFieldView.swift */,
 				EC466D182B8A6806009AE28D /* IRABackButtonView.swift */,
 				ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */,
+				ECA1DB572C1ECF7D00A8054C /* IRAToastView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +332,32 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		ECA1DB542C1EC00700A8054C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1DB552C1EC01300A8054C /* AppEnums.swift */,
+				ECA1DB592C1F5C8100A8054C /* FocusElementEnums.swift */,
+				EC0635B12C220A9C00ED7BFE /* ToastTypeEnums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		ECAEC1FD2B964BF000FC9B4B /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				ECAEC1FE2B964BF600FC9B4B /* Screens */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		ECAEC1FE2B964BF600FC9B4B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				ECAEC1FF2B964C0C00FC9B4B /* IRAAddEditRecipeView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -359,7 +377,7 @@
 			name = InstantRecipeApp;
 			packageProductDependencies = (
 				ECF871912B8BB7B9006D1027 /* OTPView */,
-				EC1B7E882B923D10005E0C30 /* Sliders */,
+				ECA1DB502C1E0FA400A8054C /* Appwrite */,
 			);
 			productName = InstantRecipeApp;
 			productReference = EC97962B2B85D592002EFDC0 /* InstantRecipeApp.app */;
@@ -391,7 +409,7 @@
 			mainGroup = EC9796222B85D592002EFDC0;
 			packageReferences = (
 				ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */,
-				EC1B7E872B923D10005E0C30 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				ECA1DB4F2C1E0FA400A8054C /* XCRemoteSwiftPackageReference "sdk-for-apple" */,
 			);
 			productRefGroup = EC97962C2B85D592002EFDC0 /* Products */;
 			projectDirPath = "";
@@ -453,9 +471,13 @@
 				EC1B7E8E2B92F1DF005E0C30 /* IRAUIColorExtension.swift in Sources */,
 				EC466D192B8A6806009AE28D /* IRABackButtonView.swift in Sources */,
 				EC9D5B8F2B8C6E180040511C /* IRAOTPViewModel.swift in Sources */,
+				EC0635B22C220A9C00ED7BFE /* ToastTypeEnums.swift in Sources */,
 				EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */,
 				EC86CE8F2B88D033000EDCC0 /* IRACustomTextFieldView.swift in Sources */,
+				ECAEC2002B964C0C00FC9B4B /* IRAAddEditRecipeView.swift in Sources */,
+				ECA1DB532C1EB91700A8054C /* AppWriteClientConfig.swift in Sources */,
 				ECA157142B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift in Sources */,
+				ECA1DB582C1ECF7D00A8054C /* IRAToastView.swift in Sources */,
 				EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */,
 				EC1B7E912B939A3B005E0C30 /* IRAProfileImageView.swift in Sources */,
 				ECA157162B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift in Sources */,
@@ -463,10 +485,12 @@
 				EC97962F2B85D592002EFDC0 /* InstantRecipeAppApp.swift in Sources */,
 				EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */,
 				EC86CE8B2B88AE0F000EDCC0 /* IRADashboardView.swift in Sources */,
+				ECA1DB5A2C1F5C8100A8054C /* FocusElementEnums.swift in Sources */,
 				EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */,
 				EC97963B2B85D594002EFDC0 /* InstantRecipeApp.xcdatamodeld in Sources */,
 				ECA157182B8E31BD0031B57D /* IRAResetPasswordView.swift in Sources */,
 				EC9796452B85D610002EFDC0 /* IRASignInView.swift in Sources */,
+				ECA1DB562C1EC01300A8054C /* AppEnums.swift in Sources */,
 				ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */,
 				ECA1571A2B8E51360031B57D /* IRAProfileView.swift in Sources */,
 			);
@@ -602,7 +626,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"InstantRecipeApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InstantRecipeApp\"";
 				DEVELOPMENT_TEAM = NX4HC3DZ28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -611,6 +635,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -632,7 +657,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"InstantRecipeApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InstantRecipeApp\"";
 				DEVELOPMENT_TEAM = NX4HC3DZ28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -641,6 +666,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -678,12 +704,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EC1B7E872B923D10005E0C30 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+		ECA1DB4F2C1E0FA400A8054C /* XCRemoteSwiftPackageReference "sdk-for-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:spacenation/swiftui-sliders.git";
+			repositoryURL = "https://github.com/appwrite/sdk-for-apple";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				minimumVersion = 6.0.0;
 			};
 		};
 		ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */ = {
@@ -697,10 +723,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EC1B7E882B923D10005E0C30 /* Sliders */ = {
+		ECA1DB502C1E0FA400A8054C /* Appwrite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EC1B7E872B923D10005E0C30 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
-			productName = Sliders;
+			package = ECA1DB4F2C1E0FA400A8054C /* XCRemoteSwiftPackageReference "sdk-for-apple" */;
+			productName = Appwrite;
 		};
 		ECF871912B8BB7B9006D1027 /* OTPView */ = {
 			isa = XCSwiftPackageProductDependency;
