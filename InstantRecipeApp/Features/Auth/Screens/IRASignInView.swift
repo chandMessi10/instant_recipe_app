@@ -6,16 +6,28 @@
 //
 
 import SwiftUI
+import UIPilot
+import LinkNavigator
 
 struct IRASignInView: View {
+    let navigator: LinkNavigatorType
     @StateObject var viewModel: IRAAuthViewModel
     @State private var isPasswordVisible = false
+    @EnvironmentObject var router: Router
+    @EnvironmentObject var pilot: UIPilot<AppRoute>
     
-    init() {
+    init(navigator: LinkNavigatorType) {
         self._viewModel = StateObject(wrappedValue: IRAAuthViewModel())
+        self.navigator = navigator
     }
     
+    @FocusState private var focusedField: FocusElement?
+    
+    // AppStorage property to keep appwrite session id
+    @AppStorage("appwriteSessionID") var appwriteSessionID: String = ""
+    
     var body: some View {
+        ZStack {
             ScrollView {
                 VStack(alignment: .center) {
                     // Circle with the logo at the center
@@ -39,12 +51,18 @@ struct IRASignInView: View {
                         textFieldLabel: "Email",
                         isError: viewModel.emailError == "" ? false : true,
                         errorText: $viewModel.emailError,
-                        fieldText: $viewModel.email
+                        fieldText: $viewModel.email,
+                        submitLabel: .next,
+                        onSubmit: {
+                            focusedField = .password
+                        },
+                        keyboardType: .emailAddress
                     )
                     .padding(.vertical, 8)
                     .onChange(of: $viewModel.email.wrappedValue) { _, _ in
                         viewModel.validateEmail()
                     }
+                    .focused($focusedField, equals: .email)
                     
                     IRACustomTextFieldView(
                         prefixImage: "lock.fill",
@@ -52,12 +70,17 @@ struct IRASignInView: View {
                         isPasswordField: true,
                         isError: viewModel.passwordError == "" ? false : true,
                         errorText: $viewModel.passwordError,
-                        fieldText: $viewModel.password
+                        fieldText: $viewModel.password,
+                        submitLabel: .done,
+                        onSubmit: {
+                            // call sign in method
+                        }
                     )
                     .padding(.vertical, 8)
                     .onChange(of: $viewModel.password.wrappedValue) { _, _ in
                         viewModel.validateSignInPassword()
                     }
+                    .focused($focusedField, equals: .password)
                     
                     HStack {
                         Spacer()
@@ -72,13 +95,12 @@ struct IRASignInView: View {
                     }
                     .padding(.bottom, 16)
                     
-                    IRACustomNavigationView(
-                        destination: IRADashboardView(),
-                        buttonText: "Login",
+                    IRACustomButton(
+                        buttonText: "Sign In",
                         action: {
-                            
+                            await viewModel.signIn()
                         },
-                        isButtonDisabled: (viewModel.emailError != "" || viewModel.passwordError != "")
+                        isLoading: viewModel.signInState == .loading
                     )
                     
                     NavigationLink(
@@ -104,10 +126,34 @@ struct IRASignInView: View {
                     Color.white
                         .ignoresSafeArea()
                 }
+                .onChange(of: viewModel.currentDestination) { oldValue, newValue in
+                    if newValue != nil  {
+                        appwriteSessionID = viewModel.sessionId
+                        navigator.replace(paths: ["home"], items: [:], isAnimated: true)
+                    }
+                }
             }
+            
+            if viewModel.signInState == .error {
+                ToastView(message: $viewModel.apiResponseValue.wrappedValue, type: $viewModel.apiToastType.wrappedValue)
+                    .zIndex(1)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                viewModel.signInState = .initial // Hide the toast after 2 seconds
+                            }
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            viewModel.signInState = .initial // Hide the toast when tapped
+                        }
+                    }
+            }
+        }
     }
 }
 
-#Preview {
-    IRASignInView()
-}
+//#Preview {
+//    IRASignInView()
+//}

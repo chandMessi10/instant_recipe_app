@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct IRASearchView: View {
+    let navigator: LinkNavigatorType
     @State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
     @State private var isShowingFilterSheet = false
@@ -22,57 +24,62 @@ struct IRASearchView: View {
     @State private var timerIntervalValue: TimeInterval = 60
     @State private var colorValue: UIColor = UIColor(hex: "#1FCC79")
     @State private var diameterValue: CGFloat = 30
+    @EnvironmentObject var router: Router
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack {
-                    HStack {
-                        IRABackButtonView()
-                        
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
-                            
-                            TextField("Search", text: $searchText)
-                                .foregroundColor(Color(UIColor(hex: "#3E5481")))
-                                .font(.system(size: 15))
-                                .fontWeight(.medium)
-                                .padding(.trailing, 0)
-                                .textInputAutocapitalization(TextInputAutocapitalization.never)
-                            if !searchText.isEmpty {
-                                Button(action: {
-                                    searchText = ""
-                                }) {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
-                                }
-                            }
-                            
-                        }
-                        .padding(16)
-                        .background(Color(UIColor(hex: "#F4F5F7")).clipShape(RoundedRectangle(cornerRadius:32)))
-                        .padding(.horizontal, 8)
-                        
+        VStack {
+            HStack {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
+                    
+                    TextField("Search", text: $searchText)
+                        .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                        .font(.system(size: 15))
+                        .fontWeight(.medium)
+                        .padding(.trailing, 0)
+                        .textInputAutocapitalization(TextInputAutocapitalization.never)
+                    if !searchText.isEmpty {
                         Button(action: {
-                            isShowingFilterSheet.toggle()
+                            searchText = ""
                         }) {
-                            Image("Filter")
-                        }
-                        .sheet(isPresented: $isShowingFilterSheet) {
-                            sheetView()
-                                .presentationDetents([.medium, .large])
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(Color(UIColor(hex: "#2E3E5C")))
                         }
                     }
-                    .padding()
-                    Rectangle()
-                        .frame(height: 8)
-                        .foregroundColor(Color(UIColor(hex: "#F4F5F7")))
-                    Spacer()
+                    
                 }
+                .padding(16)
+                .background(Color(UIColor(hex: "#F4F5F7")).clipShape(RoundedRectangle(cornerRadius:32)))
+                
+                Spacer()
+                
+                Button(action: {
+                    isShowingFilterSheet.toggle()
+                }) {
+                    Image("Filter")
+                }
+                .sheet(isPresented: $isShowingFilterSheet) {
+                    sheetView()
+                        .presentationDetents([.medium])
+                }
+                .padding(.horizontal, 4)
             }
+            .padding(10)
+            Rectangle()
+                .frame(height: 8)
+                .foregroundColor(Color(UIColor(hex: "#F4F5F7")))
+            Spacer()
         }
-        .navigationBarBackButtonHidden()
+        .navigationBarItems(
+            trailing:  Button(action: {
+                navigator.back(isAnimated: true)
+            }) {
+                Image(systemName: "xmark")
+                    .imageScale(.large)
+                    .foregroundColor(Color.gray)
+            }
+        )
     }
     
     // Define a custom view method
@@ -163,7 +170,7 @@ struct IRASearchView: View {
                     IRACustomButton(
                         buttonText: "Cancel",
                         action: {
-    //                        presentationMode.wrappedValue.dismiss()
+                            //                        presentationMode.wrappedValue.dismiss()
                             isShowingFilterSheet.toggle()
                         },
                         isSecondaryButton: true
@@ -176,15 +183,15 @@ struct IRASearchView: View {
                         }
                     )
                 }
-            }.padding(.horizontal, 16)
+            }
+            .padding(.horizontal, 16)
         }
-        .interactiveDismissDisabled()
     }
 }
 
-#Preview {
-    IRASearchView()
-}
+//#Preview {
+//    IRASearchView()
+//}
 
 /// Customizable UISlider Wrapper for SwiftUI
 struct SwiftUISlider: UIViewRepresentable {

@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import UIPilot
 
 struct IRABackButtonView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationModer
+    @EnvironmentObject var pilot: UIPilot<AppRoute>
     
     var body: some View {
         Button(action: {
-            presentationMode.wrappedValue.dismiss()
+            pilot.pop(animated: true)
+//            presentationModer.wrappedValue.dismiss()
         }) {
             Image(systemName: "chevron.backward")
                 .foregroundColor(Color(UIColor(hex: "#2E3E5C")))

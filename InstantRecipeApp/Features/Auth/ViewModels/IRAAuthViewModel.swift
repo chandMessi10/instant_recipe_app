@@ -21,8 +21,12 @@ class IRAAuthViewModel: ObservableObject {
     private var account: Account
     
     @Published var signUpState: APIState = .initial
+    @Published var signInState: APIState = .initial
+    @Published var signOutState: APIState = .initial
     @Published var apiResponseValue: String = ""
+    @Published var sessionId: String = ""
     @Published var apiToastType: ToastType = ToastType.idle
+    @Published var currentDestination: Router.Destination? = nil
     
     init() {
         self.client = ClientManager.shared.client
@@ -66,9 +70,44 @@ class IRAAuthViewModel: ObservableObject {
         passwordError = predicate.evaluate(with: password) ? "" : "Password must be at least 8 characters with a mix of uppercase, lowercase, and numbers"
     }
     
-    func signIn() {
-        if emailError == "" && passwordError == ""{
-            
+    func signIn() async {
+        if (email != "" && emailError == "") && (password != "" && passwordError == "") {
+            DispatchQueue.main.async {
+                self.signInState = .loading
+            }
+            do {
+                let session = try await account.createEmailPasswordSession(
+                    email: email,
+                    password: password
+                )
+                DispatchQueue.main.async {
+                    self.signInState = .success
+                    self.sessionId = session.id
+                    self.currentDestination = .home
+                    self.apiToastType = ToastType.success
+                }
+            } catch let error as AppwriteError {
+                // Handle AppwriteException
+                print("Appwrite exception: \(error)")
+                DispatchQueue.main.async {
+                    self.signInState = .error
+                    self.apiResponseValue = error.description
+                    self.apiToastType = ToastType.error
+                }
+            } catch {
+                // Handle other generic exceptions
+                print("Generic exception: \(error)")
+                DispatchQueue.main.async {
+                    self.signInState = .error
+                    self.apiResponseValue = error.localizedDescription
+                    self.apiToastType = ToastType.error
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.validateEmail()
+                self.validateSignInPassword()
+            }
         }
     }
     
@@ -86,7 +125,7 @@ class IRAAuthViewModel: ObservableObject {
                 self.signUpState = .loading
             }
             do {
-                let user = try await account.create(
+                _ = try await account.create(
                     userId: Appwrite.ID.unique(),
                     email: email,
                     password: password,
@@ -94,7 +133,6 @@ class IRAAuthViewModel: ObservableObject {
                 )
                 DispatchQueue.main.async {
                     self.signUpState = .success
-                    print("account create success: \(user)")
                     self.apiResponseValue = "Account created successfully 😃"
                     self.apiToastType = ToastType.success
                 }
@@ -118,5 +156,37 @@ class IRAAuthViewModel: ObservableObject {
         } else {
             validateAllFields()
         }
+    }
+    
+    func signOut(_ sessionID: String) async {
+        DispatchQueue.main.async {
+            self.signOutState = .loading
+        }
+        do {
+            _ = try await account.deleteSession(
+                sessionId: sessionID
+            )
+            DispatchQueue.main.async {
+                self.signOutState = .success
+                self.apiToastType = ToastType.success
+            }
+        } catch let error as AppwriteError {
+            // Handle AppwriteException
+            print("Appwrite exception: \(error)")
+            DispatchQueue.main.async {
+                self.signOutState = .error
+                self.apiResponseValue = error.description
+                self.apiToastType = ToastType.error
+            }
+        } catch {
+            // Handle other generic exceptions
+            print("Generic exception: \(error)")
+            DispatchQueue.main.async {
+                self.signOutState = .error
+                self.apiResponseValue = error.localizedDescription
+                self.apiToastType = ToastType.error
+            }
+        }
+        
     }
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */; };
 		EC0635B22C220A9C00ED7BFE /* ToastTypeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0635B12C220A9C00ED7BFE /* ToastTypeEnums.swift */; };
+		EC0635B52C249F2500ED7BFE /* RoutingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0635B42C249F2500ED7BFE /* RoutingConfig.swift */; };
+		EC0635B72C24A75500ED7BFE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0635B62C24A75500ED7BFE /* ViewExtension.swift */; };
+		EC0635BA2C27455000ED7BFE /* UIPilot in Frameworks */ = {isa = PBXBuildFile; productRef = EC0635B92C27455000ED7BFE /* UIPilot */; };
+		EC0635BC2C27458E00ED7BFE /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0635BB2C27458E00ED7BFE /* AppRoute.swift */; };
 		EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */; };
 		EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */; };
 		EC1B7E8E2B92F1DF005E0C30 /* IRAUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B7E8D2B92F1DF005E0C30 /* IRAUIColorExtension.swift */; };
@@ -41,6 +45,25 @@
 		ECA1DB582C1ECF7D00A8054C /* IRAToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DB572C1ECF7D00A8054C /* IRAToastView.swift */; };
 		ECA1DB5A2C1F5C8100A8054C /* FocusElementEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DB592C1F5C8100A8054C /* FocusElementEnums.swift */; };
 		ECAEC2002B964C0C00FC9B4B /* IRAAddEditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAEC1FF2B964C0C00FC9B4B /* IRAAddEditRecipeView.swift */; };
+		ECC8B66E2C516B270064CF6A /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = ECC8B66D2C516B270064CF6A /* LinkNavigator */; };
+		ECC8B6702C516DD20064CF6A /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B66F2C516DD20064CF6A /* AppDependency.swift */; };
+		ECC8B6722C516EAC0064CF6A /* AppRouterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6712C516EAC0064CF6A /* AppRouterGroup.swift */; };
+		ECC8B6742C51703B0064CF6A /* IRAOnboardingRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6732C51703B0064CF6A /* IRAOnboardingRouteBuilder.swift */; };
+		ECC8B6762C5171D80064CF6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6752C5171D80064CF6A /* AppDelegate.swift */; };
+		ECC8B6792C5175600064CF6A /* IRASignInRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6782C5175600064CF6A /* IRASignInRouteBuilder.swift */; };
+		ECC8B67B2C5179410064CF6A /* IRAHomeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B67A2C5179410064CF6A /* IRAHomeRouteBuilder.swift */; };
+		ECC8B67D2C5214150064CF6A /* IRAProfileViewRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B67C2C5214150064CF6A /* IRAProfileViewRouteBuilder.swift */; };
+		ECC8B67F2C5234910064CF6A /* IRASearchRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B67E2C5234910064CF6A /* IRASearchRouteBuilder.swift */; };
+		ECC8B6822C5248690064CF6A /* IRAHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6812C5248690064CF6A /* IRAHomeViewModel.swift */; };
+		ECC8B6852C5249C80064CF6A /* IRAProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6842C5249C80064CF6A /* IRAProfileViewModel.swift */; };
+		ECC8B6882C5257600064CF6A /* IRAProfileDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6872C5257600064CF6A /* IRAProfileDetailModel.swift */; };
+		ECC8B68C2C5267B70064CF6A /* IRARecipeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B68B2C5267B70064CF6A /* IRARecipeItemView.swift */; };
+		ECC8B68E2C527A830064CF6A /* IRARecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B68D2C527A830064CF6A /* IRARecipeDetailView.swift */; };
+		ECC8B6902C527A9D0064CF6A /* IRARecipeDetailRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B68F2C527A9D0064CF6A /* IRARecipeDetailRouteBuilder.swift */; };
+		ECC8B6942C528FD50064CF6A /* IRAAddEditRecipeRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6932C528FD50064CF6A /* IRAAddEditRecipeRouteBuilder.swift */; };
+		ECC8B6972C5291410064CF6A /* IRAAddEditRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6962C5291410064CF6A /* IRAAddEditRecipeViewModel.swift */; };
+		ECC8B6992C52914C0064CF6A /* IRARecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B6982C52914C0064CF6A /* IRARecipeDetailViewModel.swift */; };
+		ECC8B69C2C529CC50064CF6A /* IRAPhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8B69B2C529CC50064CF6A /* IRAPhotoPickerView.swift */; };
 		ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */; };
 		ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */ = {isa = PBXBuildFile; productRef = ECF871912B8BB7B9006D1027 /* OTPView */; };
 /* End PBXBuildFile section */
@@ -50,6 +73,9 @@
 		4D1587413A6F69ADEA4663BB /* Pods-InstantRecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstantRecipeApp.debug.xcconfig"; path = "Target Support Files/Pods-InstantRecipeApp/Pods-InstantRecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		82EEF4EC0BA20680E2EB6A1F /* Pods_InstantRecipeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstantRecipeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0635B12C220A9C00ED7BFE /* ToastTypeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTypeEnums.swift; sourceTree = "<group>"; };
+		EC0635B42C249F2500ED7BFE /* RoutingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingConfig.swift; sourceTree = "<group>"; };
+		EC0635B62C24A75500ED7BFE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		EC0635BB2C27458E00ED7BFE /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
 		EC06B8B52B87D59C00905DAF /* IRACustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomNavigationView.swift; sourceTree = "<group>"; };
 		EC06B8B72B886E8E00905DAF /* IRAHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAHomeView.swift; sourceTree = "<group>"; };
 		EC1B7E8D2B92F1DF005E0C30 /* IRAUIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAUIColorExtension.swift; sourceTree = "<group>"; };
@@ -82,6 +108,24 @@
 		ECA1DB572C1ECF7D00A8054C /* IRAToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAToastView.swift; sourceTree = "<group>"; };
 		ECA1DB592C1F5C8100A8054C /* FocusElementEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusElementEnums.swift; sourceTree = "<group>"; };
 		ECAEC1FF2B964C0C00FC9B4B /* IRAAddEditRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAAddEditRecipeView.swift; sourceTree = "<group>"; };
+		ECC8B66F2C516DD20064CF6A /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		ECC8B6712C516EAC0064CF6A /* AppRouterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterGroup.swift; sourceTree = "<group>"; };
+		ECC8B6732C51703B0064CF6A /* IRAOnboardingRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAOnboardingRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B6752C5171D80064CF6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ECC8B6782C5175600064CF6A /* IRASignInRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASignInRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B67A2C5179410064CF6A /* IRAHomeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAHomeRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B67C2C5214150064CF6A /* IRAProfileViewRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAProfileViewRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B67E2C5234910064CF6A /* IRASearchRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRASearchRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B6812C5248690064CF6A /* IRAHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAHomeViewModel.swift; sourceTree = "<group>"; };
+		ECC8B6842C5249C80064CF6A /* IRAProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAProfileViewModel.swift; sourceTree = "<group>"; };
+		ECC8B6872C5257600064CF6A /* IRAProfileDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAProfileDetailModel.swift; sourceTree = "<group>"; };
+		ECC8B68B2C5267B70064CF6A /* IRARecipeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRARecipeItemView.swift; sourceTree = "<group>"; };
+		ECC8B68D2C527A830064CF6A /* IRARecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRARecipeDetailView.swift; sourceTree = "<group>"; };
+		ECC8B68F2C527A9D0064CF6A /* IRARecipeDetailRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRARecipeDetailRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B6932C528FD50064CF6A /* IRAAddEditRecipeRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAAddEditRecipeRouteBuilder.swift; sourceTree = "<group>"; };
+		ECC8B6962C5291410064CF6A /* IRAAddEditRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAAddEditRecipeViewModel.swift; sourceTree = "<group>"; };
+		ECC8B6982C52914C0064CF6A /* IRARecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRARecipeDetailViewModel.swift; sourceTree = "<group>"; };
+		ECC8B69B2C529CC50064CF6A /* IRAPhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRAPhotoPickerView.swift; sourceTree = "<group>"; };
 		ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRACustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				642CEB4B797396E6BC9C1072 /* Pods_InstantRecipeApp.framework in Frameworks */,
+				ECC8B66E2C516B270064CF6A /* LinkNavigator in Frameworks */,
+				EC0635BA2C27455000ED7BFE /* UIPilot in Frameworks */,
 				ECF871922B8BB7B9006D1027 /* OTPView in Frameworks */,
 				ECA1DB512C1E0FA400A8054C /* Appwrite in Frameworks */,
 			);
@@ -116,10 +162,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC0635B32C249F1500ED7BFE /* NavigationConfig */ = {
+			isa = PBXGroup;
+			children = (
+				EC0635B42C249F2500ED7BFE /* RoutingConfig.swift */,
+				EC0635BB2C27458E00ED7BFE /* AppRoute.swift */,
+				ECC8B66F2C516DD20064CF6A /* AppDependency.swift */,
+				ECC8B6712C516EAC0064CF6A /* AppRouterGroup.swift */,
+			);
+			path = NavigationConfig;
+			sourceTree = "<group>";
+		};
 		EC1B7E8C2B92F1BF005E0C30 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				EC1B7E8D2B92F1DF005E0C30 /* IRAUIColorExtension.swift */,
+				EC0635B62C24A75500ED7BFE /* ViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +228,7 @@
 				EC9796372B85D594002EFDC0 /* Persistence.swift */,
 				EC9796322B85D594002EFDC0 /* Assets.xcassets */,
 				EC9796352B85D594002EFDC0 /* Preview Assets.xcassets */,
+				ECC8B6752C5171D80064CF6A /* AppDelegate.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -177,6 +236,7 @@
 		ECA1571E2B8F146F0031B57D /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				EC0635B32C249F1500ED7BFE /* NavigationConfig */,
 				ECA157212B8F14B00031B57D /* Utilities */,
 				ECA1DB522C1EB91700A8054C /* AppWriteClientConfig.swift */,
 			);
@@ -209,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA157272B8F15C10031B57D /* Screens */,
+				ECC8B6732C51703B0064CF6A /* IRAOnboardingRouteBuilder.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -216,6 +277,7 @@
 		ECA157232B8F14CA0031B57D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8B6772C51754F0064CF6A /* AuthRouteBuilder */,
 				ECA1572C2B8F168E0031B57D /* Views */,
 				ECA157262B8F151B0031B57D /* ViewModels */,
 				ECA157252B8F15100031B57D /* Screens */,
@@ -226,6 +288,8 @@
 		ECA157242B8F14DD0031B57D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8B6912C527AAA0064CF6A /* HomeRouteBuilder */,
+				ECC8B6802C5248580064CF6A /* ViewModels */,
 				ECA157282B8F15D50031B57D /* Screens */,
 			);
 			path = Home;
@@ -286,6 +350,7 @@
 				EC466D182B8A6806009AE28D /* IRABackButtonView.swift */,
 				ECF8718E2B8BB129006D1027 /* IRACustomButton.swift */,
 				ECA1DB572C1ECF7D00A8054C /* IRAToastView.swift */,
+				ECC8B68B2C5267B70064CF6A /* IRARecipeItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,8 +383,11 @@
 		ECA1572F2B8F16CA0031B57D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8B6862C52574F0064CF6A /* Model */,
+				ECC8B6832C5249970064CF6A /* ViewModel */,
 				EC1B7E8F2B9399F3005E0C30 /* Views */,
 				ECA157302B8F16D00031B57D /* Screens */,
+				ECC8B67C2C5214150064CF6A /* IRAProfileViewRouteBuilder.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -345,6 +413,9 @@
 		ECAEC1FD2B964BF000FC9B4B /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8B69A2C529CB10064CF6A /* View */,
+				ECC8B6952C52912A0064CF6A /* ViewModels */,
+				ECC8B6922C527AC30064CF6A /* RecipeRouteBuilder */,
 				ECAEC1FE2B964BF600FC9B4B /* Screens */,
 			);
 			path = Recipe;
@@ -354,8 +425,76 @@
 			isa = PBXGroup;
 			children = (
 				ECAEC1FF2B964C0C00FC9B4B /* IRAAddEditRecipeView.swift */,
+				ECC8B68D2C527A830064CF6A /* IRARecipeDetailView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		ECC8B6772C51754F0064CF6A /* AuthRouteBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B6782C5175600064CF6A /* IRASignInRouteBuilder.swift */,
+			);
+			path = AuthRouteBuilder;
+			sourceTree = "<group>";
+		};
+		ECC8B6802C5248580064CF6A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B6812C5248690064CF6A /* IRAHomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ECC8B6832C5249970064CF6A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B6842C5249C80064CF6A /* IRAProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECC8B6862C52574F0064CF6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B6872C5257600064CF6A /* IRAProfileDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECC8B6912C527AAA0064CF6A /* HomeRouteBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B67A2C5179410064CF6A /* IRAHomeRouteBuilder.swift */,
+				ECC8B67E2C5234910064CF6A /* IRASearchRouteBuilder.swift */,
+			);
+			path = HomeRouteBuilder;
+			sourceTree = "<group>";
+		};
+		ECC8B6922C527AC30064CF6A /* RecipeRouteBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B68F2C527A9D0064CF6A /* IRARecipeDetailRouteBuilder.swift */,
+				ECC8B6932C528FD50064CF6A /* IRAAddEditRecipeRouteBuilder.swift */,
+			);
+			path = RecipeRouteBuilder;
+			sourceTree = "<group>";
+		};
+		ECC8B6952C52912A0064CF6A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B6962C5291410064CF6A /* IRAAddEditRecipeViewModel.swift */,
+				ECC8B6982C52914C0064CF6A /* IRARecipeDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ECC8B69A2C529CB10064CF6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8B69B2C529CC50064CF6A /* IRAPhotoPickerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +517,8 @@
 			packageProductDependencies = (
 				ECF871912B8BB7B9006D1027 /* OTPView */,
 				ECA1DB502C1E0FA400A8054C /* Appwrite */,
+				EC0635B92C27455000ED7BFE /* UIPilot */,
+				ECC8B66D2C516B270064CF6A /* LinkNavigator */,
 			);
 			productName = InstantRecipeApp;
 			productReference = EC97962B2B85D592002EFDC0 /* InstantRecipeApp.app */;
@@ -410,6 +551,8 @@
 			packageReferences = (
 				ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */,
 				ECA1DB4F2C1E0FA400A8054C /* XCRemoteSwiftPackageReference "sdk-for-apple" */,
+				EC0635B82C27455000ED7BFE /* XCRemoteSwiftPackageReference "UIPilot" */,
+				ECC8B66C2C516B270064CF6A /* XCRemoteSwiftPackageReference "LinkNavigator" */,
 			);
 			productRefGroup = EC97962C2B85D592002EFDC0 /* Products */;
 			projectDirPath = "";
@@ -462,28 +605,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC8B68E2C527A830064CF6A /* IRARecipeDetailView.swift in Sources */,
+				ECC8B67D2C5214150064CF6A /* IRAProfileViewRouteBuilder.swift in Sources */,
 				EC86CE892B88ADD0000EDCC0 /* IRAOtpVerificationView.swift in Sources */,
 				EC9796382B85D594002EFDC0 /* Persistence.swift in Sources */,
+				ECC8B6762C5171D80064CF6A /* AppDelegate.swift in Sources */,
 				EC86CE852B88AD60000EDCC0 /* IRASignUpView.swift in Sources */,
 				EC9796312B85D592002EFDC0 /* ContentView.swift in Sources */,
+				ECC8B6992C52914C0064CF6A /* IRARecipeDetailViewModel.swift in Sources */,
 				EC86CE872B88ADB9000EDCC0 /* IRAForgotPasswordView.swift in Sources */,
 				EC86CE8D2B88CDC9000EDCC0 /* IRACustomHeaderView.swift in Sources */,
+				ECC8B6942C528FD50064CF6A /* IRAAddEditRecipeRouteBuilder.swift in Sources */,
+				ECC8B6702C516DD20064CF6A /* AppDependency.swift in Sources */,
+				EC0635B72C24A75500ED7BFE /* ViewExtension.swift in Sources */,
 				EC1B7E8E2B92F1DF005E0C30 /* IRAUIColorExtension.swift in Sources */,
 				EC466D192B8A6806009AE28D /* IRABackButtonView.swift in Sources */,
 				EC9D5B8F2B8C6E180040511C /* IRAOTPViewModel.swift in Sources */,
 				EC0635B22C220A9C00ED7BFE /* ToastTypeEnums.swift in Sources */,
 				EC06B8B62B87D59C00905DAF /* IRACustomNavigationView.swift in Sources */,
+				ECC8B69C2C529CC50064CF6A /* IRAPhotoPickerView.swift in Sources */,
 				EC86CE8F2B88D033000EDCC0 /* IRACustomTextFieldView.swift in Sources */,
+				EC0635B52C249F2500ED7BFE /* RoutingConfig.swift in Sources */,
 				ECAEC2002B964C0C00FC9B4B /* IRAAddEditRecipeView.swift in Sources */,
 				ECA1DB532C1EB91700A8054C /* AppWriteClientConfig.swift in Sources */,
 				ECA157142B8E2C3A0031B57D /* IRAPasswordCriteriaListView.swift in Sources */,
 				ECA1DB582C1ECF7D00A8054C /* IRAToastView.swift in Sources */,
 				EC06B8B82B886E8E00905DAF /* IRAHomeView.swift in Sources */,
+				ECC8B67F2C5234910064CF6A /* IRASearchRouteBuilder.swift in Sources */,
 				EC1B7E912B939A3B005E0C30 /* IRAProfileImageView.swift in Sources */,
 				ECA157162B8E2C4C0031B57D /* IRAPasswordCriteriaItemView.swift in Sources */,
 				ECA1571C2B8E5CB70031B57D /* IRASearchView.swift in Sources */,
 				EC97962F2B85D592002EFDC0 /* InstantRecipeAppApp.swift in Sources */,
+				EC0635BC2C27458E00ED7BFE /* AppRoute.swift in Sources */,
 				EC9796472B85D664002EFDC0 /* IRAAuthViewModel.swift in Sources */,
+				ECC8B67B2C5179410064CF6A /* IRAHomeRouteBuilder.swift in Sources */,
 				EC86CE8B2B88AE0F000EDCC0 /* IRADashboardView.swift in Sources */,
 				ECA1DB5A2C1F5C8100A8054C /* FocusElementEnums.swift in Sources */,
 				EC9796492B86710C002EFDC0 /* IRAOnboardingView.swift in Sources */,
@@ -492,7 +647,16 @@
 				EC9796452B85D610002EFDC0 /* IRASignInView.swift in Sources */,
 				ECA1DB562C1EC01300A8054C /* AppEnums.swift in Sources */,
 				ECF8718F2B8BB129006D1027 /* IRACustomButton.swift in Sources */,
+				ECC8B68C2C5267B70064CF6A /* IRARecipeItemView.swift in Sources */,
+				ECC8B6742C51703B0064CF6A /* IRAOnboardingRouteBuilder.swift in Sources */,
+				ECC8B6822C5248690064CF6A /* IRAHomeViewModel.swift in Sources */,
+				ECC8B6722C516EAC0064CF6A /* AppRouterGroup.swift in Sources */,
+				ECC8B6902C527A9D0064CF6A /* IRARecipeDetailRouteBuilder.swift in Sources */,
+				ECC8B6882C5257600064CF6A /* IRAProfileDetailModel.swift in Sources */,
+				ECC8B6852C5249C80064CF6A /* IRAProfileViewModel.swift in Sources */,
+				ECC8B6792C5175600064CF6A /* IRASignInRouteBuilder.swift in Sources */,
 				ECA1571A2B8E51360031B57D /* IRAProfileView.swift in Sources */,
+				ECC8B6972C5291410064CF6A /* IRAAddEditRecipeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +794,7 @@
 				DEVELOPMENT_TEAM = NX4HC3DZ28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to upload photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -661,6 +826,7 @@
 				DEVELOPMENT_TEAM = NX4HC3DZ28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to upload photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -704,12 +870,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EC0635B82C27455000ED7BFE /* XCRemoteSwiftPackageReference "UIPilot" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/canopas/UIPilot.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 		ECA1DB4F2C1E0FA400A8054C /* XCRemoteSwiftPackageReference "sdk-for-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/appwrite/sdk-for-apple";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
+			};
+		};
+		ECC8B66C2C516B270064CF6A /* XCRemoteSwiftPackageReference "LinkNavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/interactord/LinkNavigator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.6;
 			};
 		};
 		ECF871902B8BB7B9006D1027 /* XCRemoteSwiftPackageReference "otpview-swiftui" */ = {
@@ -723,10 +905,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EC0635B92C27455000ED7BFE /* UIPilot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC0635B82C27455000ED7BFE /* XCRemoteSwiftPackageReference "UIPilot" */;
+			productName = UIPilot;
+		};
 		ECA1DB502C1E0FA400A8054C /* Appwrite */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ECA1DB4F2C1E0FA400A8054C /* XCRemoteSwiftPackageReference "sdk-for-apple" */;
 			productName = Appwrite;
+		};
+		ECC8B66D2C516B270064CF6A /* LinkNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECC8B66C2C516B270064CF6A /* XCRemoteSwiftPackageReference "LinkNavigator" */;
+			productName = LinkNavigator;
 		};
 		ECF871912B8BB7B9006D1027 /* OTPView */ = {
 			isa = XCSwiftPackageProductDependency;

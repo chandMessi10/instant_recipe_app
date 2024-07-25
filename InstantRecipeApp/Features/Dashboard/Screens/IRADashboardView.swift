@@ -13,15 +13,17 @@ struct IRADashboardView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                IRAHomeView()
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }.tag(0)
+//                IRAHomeView()
+//                    .tabItem {
+//                        Label("Home", systemImage: "house")
+//                    }
+//                    .tag(0)
                 
-                IRAProfileView()
-                    .tabItem {
-                        Label("Profile", systemImage: "person.fill")
-                    }.tag(1)
+//                IRAProfileView()
+//                    .tabItem {
+//                        Label("Profile", systemImage: "person.fill")
+//                    }
+//                    .tag(1)
             }
             .onAppear {
                 // correct the transparency bug for Tab bars
@@ -34,13 +36,8 @@ struct IRADashboardView: View {
                 UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
             }
             .accentColor(Color(UIColor(hex: "#1FCC79")))
-            .onChange(of: selectedTab) { oldValue, newValue in
-                if newValue == 1 {
-                    
-                }
-            }
         }
-        .navigationBarBackButtonHidden()
+        .navigationBarHidden(true)
     }
 }
 

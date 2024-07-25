@@ -6,142 +6,203 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct IRAProfileView: View {
-    
+    let navigator: LinkNavigatorType
     @State private var selectedTab = 0
     let tabItems = ["Recipes", "Liked"]
+    @StateObject var authViewModel: IRAAuthViewModel
+    @StateObject var profileViewModel: IRAProfileViewModel
+    
+    // AppStorage property to keep appwrite session id
+    @AppStorage("appwriteSessionID") var appwriteSessionID: String = ""
+    
+    init(navigator: LinkNavigatorType) {
+        self._authViewModel = StateObject(wrappedValue: IRAAuthViewModel())
+        self._profileViewModel = StateObject(wrappedValue: IRAProfileViewModel())
+        self.navigator = navigator
+    }
+    
+    @State private var showAlert = false
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(
-                        action: {},
-                        label: {
-                            Image(systemName: "square.and.arrow.up.fill")
-                                .font(.title3)
-                                .foregroundColor(.black)
+        if profileViewModel.profileState == .loading {
+            HStack {
+                Text("Loading profile ...")
+            }
+        }
+        
+        if profileViewModel.profileState == .error {
+            HStack {
+                Text("Error getting profile ...")
+            }
+        }
+        
+        if profileViewModel.profileState == .success {
+            ZStack(alignment: .bottomTrailing) {
+                VStack {
+                    //                        IRAProfileImageView(imageUrl: "https://avatars.githubusercontent.com/u/30414962?v=4")
+                    //                            .padding(.bottom, 16)
+                    Text(profileViewModel.userDetail?.name ?? "Profile Name")
+                        .font(.system(size: 16))
+                        .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                        .fontWeight(.bold)
+                        .padding(.bottom, 2)
+                    HStack(alignment: .center) {
+                        Text(profileViewModel.userDetail?.emailAddress ?? "@")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                            .fontWeight(.semibold)
+                        
+                        if let isVerified = profileViewModel.userDetail?.emailAddressVerified {
+                            Image(systemName: isVerified ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .background(isVerified ? Color.green : Color.gray)
+                                .clipShape(Circle())
+                                .padding(.horizontal, 2)
+                        } else {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .background(Color.gray)
+                                .clipShape(Circle())
+                                .padding(.horizontal, 2)
                         }
-                    )
-                }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 8)
-                
-                IRAProfileImageView(imageUrl: "https://avatars.githubusercontent.com/u/30414962?v=4")
-                    .padding(.bottom, 24)
-                Text("Profile Name")
-                    .font(.system(size: 17))
-                    .foregroundColor(Color(UIColor(hex: "#3E5481")))
-                    .fontWeight(.bold)
-                    .padding(.bottom, 24)
-                Rectangle()
-                    .frame(height: 8)
-                    .foregroundColor(Color(UIColor(hex: "#F4F5F7")))
-                    .padding(.bottom, 8)
-                
-                TabBarView(currentTab: $selectedTab)
-                
-                TabView(selection: $selectedTab) {
-                    ScrollView {
-                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 24), count: 2)) {
-                            ForEach(1...8, id: \.self) { item in
-                                ZStack(alignment: .topTrailing) {
-                                    VStack(alignment: .leading) {
-                                        AsyncImage(
-                                            url: URL(string: "https://avatars.githubusercontent.com/u/30414962?v=4")!,
-                                            scale: 2
-                                        )
-                                        .frame(maxWidth: 180, maxHeight: 160)
-                                        .background(Color.gray)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(16)
-                                        .padding(.bottom, 16)
-                                        
-                                        Text("Food Name")
-                                            .font(.system(size: 17))
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color(UIColor(hex: "#3E5481")))
-                                            .padding(.bottom, 8)
-                                        
-                                        HStack {
-                                            Text("Food Name")
-                                                .font(.system(size: 12))
-                                                .fontWeight(.medium)
-                                                .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
-                                            Rectangle()
-                                                .clipShape(Circle())
-                                                .frame(width: 5, height: 5)
-                                                .padding(0)
-                                                .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
-                                            Text(">60 mins")
-                                                .font(.system(size: 12))
-                                                .fontWeight(.medium)
-                                                .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
-                                        }
-                                    }
-                                    
-                                    Button(
-                                        action: {},
-                                        label: {
-                                            ZStack {
-                                                Rectangle()
-                                                    .foregroundColor(.white).opacity(0.3)
-                                                    .frame(width: 32, height: 32)
-                                                    .cornerRadius(8)
-                                                
-                                                Image(systemName:  "heart")
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 20)
-                                                )
-                                            }
-                                            .padding(8)
-                                            .offset(x: -2, y: 2)
-                                        }
+                    }.padding(.bottom, 2)
+                    if let registrationDateString = profileViewModel.userDetail?.registrationDateTime,
+                       let registrationDate = customStringToDate(registrationDateString) {
+                        Text("Member since: \(formattedDate(registrationDate))")
+                            .font(.system(size: 10))
+                            .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                            .fontWeight(.bold)
+                            .padding(.bottom, 12)
+                    } else {
+                        Text("Member since: N/A")
+                            .font(.system(size: 10))
+                            .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                            .fontWeight(.bold)
+                            .padding(.bottom, 12)
+                    }
+                    Rectangle()
+                        .frame(height: 8)
+                        .foregroundColor(Color(UIColor(hex: "#F4F5F7")))
+                        .padding(.bottom, 8)
+                    
+                    TabBarView(currentTab: $selectedTab)
+                    
+                    TabView(selection: $selectedTab) {
+                        ScrollView {
+                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 24), count: 2)) {
+                                ForEach(1...8, id: \.self) { item in
+                                    IRARecipeItemView(
+                                        imageUrl: "",
+                                        foodName: "Food Name",
+                                        details: "Food Details",
+                                        time: ">60 mins",
+                                        onTap: {}
                                     )
                                 }
-                                .frame(height: 230)
-                                .padding(.bottom, 16)
-                            }
-                        }.padding(.horizontal, 16)
-                    }.tag(0)
-                    ScrollView {
-                        LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 16) {
-                            ForEach(1...3, id: \.self) { item in
-                                // Replace this with your actual grid item view
-                                Rectangle()
-                                    .frame(height: 100)
-                                    .foregroundColor(.blue)
+                            }.padding(.horizontal, 16)
+                        }.tag(0)
+                        ScrollView {
+                            Text("Coming Soon...").font(.title)
+                                .padding(16)
+                        }.tag(1)
+                    }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    
+                    Spacer()
+                }
+                .onChange(of: authViewModel.signOutState) { oldValue, newValue in
+                    if newValue == .success {
+                        appwriteSessionID = ""
+                        navigator.replace(paths: ["signIn"], items: [:], isAnimated: true)
+                    }
+                }
+                
+                Button {
+                    navigator.next(paths: ["addEditRecipe"], items: [:], isAnimated: true)
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title.weight(.semibold))
+                        .padding()
+                        .background(Color(UIColor(hex: "#1FCC79")))
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                        .shadow(radius: 4, x: 0, y: 4)
+                }
+                .padding()
+                
+                if authViewModel.signOutState == .error {
+                    ToastView(message: $authViewModel.apiResponseValue.wrappedValue, type: $authViewModel.apiToastType.wrappedValue)
+                        .zIndex(1)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    authViewModel.signOutState = .initial
+                                }
                             }
                         }
-                        .padding(16)
-                    }.tag(1)
+                        .onTapGesture {
+                            withAnimation {
+                                authViewModel.signOutState = .initial
+                            }
+                        }
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
                 
-                Spacer()
+                if authViewModel.signOutState == .loading {
+                    LoadingView()
+                }
             }
-            
-            NavigationLink {
-                IRAAddEditRecipeView()
-            } label: {
-                Image(systemName: "plus")
-                    .font(.title.weight(.semibold))
-                    .padding()
-                    .background(Color(UIColor(hex: "#1FCC79")))
-                    .foregroundColor(.white)
-                    .clipShape(Circle())
-                    .shadow(radius: 4, x: 0, y: 4)
+            .navigationBarItems(
+                trailing: Button(
+                    action: {
+                        self.showAlert = true
+                    },
+                    label: {
+                        Image(systemName: "arrow.right.square")
+                            .font(.title3)
+                            .foregroundColor(.black)
+                    }
+                )
+            )
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Confirmation"),
+                    message: Text("Are you sure you want to sign out?"),
+                    primaryButton: .default(Text("Yes")) {
+                        Task {
+                            await authViewModel.signOut(appwriteSessionID)
+                        }
+                    },
+                    secondaryButton: .cancel(Text("No")) {
+                        self.showAlert = false
+                    }
+                )
             }
-            .padding()
         }
+    }
+    
+    func customStringToDate(_ dateString: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter.date(from: dateString)
+    }
+    
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
     }
 }
 
-#Preview {
-    IRAProfileView()
-}
+//#Preview {
+//    IRAProfileView()
+//}
 
 struct TabBarView: View {
     @Binding var currentTab: Int
@@ -204,5 +265,26 @@ struct TabBarItem: View {
             .animation(.spring(), value: self.currentTab)
         }
         .buttonStyle(.plain)
+    }
+}
+
+struct LoadingView: View {
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.4)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(2)
+                Text("Signing Out...")
+                    .foregroundColor(.white)
+                    .padding(.top, 24)
+            }
+            .padding()
+            .background(Color.gray.opacity(0.8))
+            .cornerRadius(10)
+            .shadow(radius: 10)
+        }
     }
 }

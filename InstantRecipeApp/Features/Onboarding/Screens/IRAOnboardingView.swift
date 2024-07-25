@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LinkNavigator
 
 struct IRAOnboardingView: View {
+    let navigator: LinkNavigatorType
+    
     // AppStorage property to track onboarding completion
     @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
     
@@ -37,19 +40,25 @@ struct IRAOnboardingView: View {
                     .fontWeight(.semibold)
                     .padding(.bottom, 72)
                 
-                IRACustomNavigationView(
-                    destination: IRASignInView(),
-                    buttonText: "Get Started",
-                    action: {
-                        hasCompletedOnboarding = true
-                    }
-                )
+                IRACustomButton(buttonText: "Continue") {
+                    hasCompletedOnboarding = true
+                    navigator.replace(paths: ["signIn"], items: [:], isAnimated: true)
+                }
+                
+//                IRACustomNavigationView(
+//                    destination: IRASignInView(navigator: navigator),
+//                    buttonText: "Get Started",
+//                    action: {
+//                        hasCompletedOnboarding = true
+//                    }
+//                )
+
             }
             .padding(.horizontal, 16)
         }
     }
 }
 
-#Preview {
-    IRAOnboardingView()
-}
+//#Preview {
+//    IRAOnboardingView()
+//}
