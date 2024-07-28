@@ -16,7 +16,8 @@ struct AppRouterGroup {
            IRAProfileViewRouteBuilder(),
            IRASearchRouteBuilder(),
            IRARecipeDetailRouteBuilder(),
-           IRAAddEditRecipeRouteBuilder()
+           IRAAddEditRecipeRouteBuilder(),
+           IRARecipeUploadSuccessRouteBuilder()
         ]
     }
 }

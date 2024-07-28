@@ -17,6 +17,8 @@ class IRAProfileViewModel: ObservableObject {
     @Published var apiToastType: ToastType = ToastType.idle
     @Published var userDetail: IRAProfileDetailModel? = nil
     
+    static let userDetailShared = IRAProfileViewModel()
+    
     init() {
         self.client = ClientManager.shared.client
         self.account = Account(self.client)
@@ -36,7 +38,13 @@ class IRAProfileViewModel: ObservableObject {
         do {
             let user = try await account.get()
             DispatchQueue.main.async {
-                self.userDetail = IRAProfileDetailModel(id: user.id, name:  user.name, emailAddress:  user.email, emailAddressVerified: user.emailVerification, registrationDateTime: user.registration)
+                self.userDetail = IRAProfileDetailModel(
+                    id: user.id,
+                    name:  user.name,
+                    emailAddress:  user.email,
+                    emailAddressVerified: user.emailVerification,
+                    registrationDateTime: user.registration
+                )
                 self.profileState = .success
             }
         } catch let error as AppwriteError {

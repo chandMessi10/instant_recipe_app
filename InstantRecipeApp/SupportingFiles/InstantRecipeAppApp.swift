@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Appwrite
-import UIPilot
 import LinkNavigator
 
 @main
@@ -33,7 +32,7 @@ struct InstantRecipeAppApp: App {
     var body: some Scene {
         WindowGroup {
             navigator
-                .launch(paths: appwriteSessionID.isEmpty ? (hasCompletedOnboarding ? ["signIn"] : ["onboarding"]) : ["addEditRecipe"], items: [:])
+                .launch(paths: appwriteSessionID == "" ? (hasCompletedOnboarding ? ["signIn"] : ["onboarding"]) : ["home"], items: [:],prefersLargeTitles: false)
                 .onOpenURL { url in
                     // in case you need deep link navigation,
                     // deep links should be processed here.
@@ -43,41 +42,4 @@ struct InstantRecipeAppApp: App {
                 .ignoresSafeArea()
         }
     }
-    
-    //    var body: some Scene {
-    //        WindowGroup {
-    //            NavigationStack {
-    //                if appwriteSessionID != "" {
-    //                    UIPilotHost(UIPilot(initial: AppRoute.Dashboard, debug: true)) { route in
-    //                        switch route {
-    //                        case .Onboarding: IRAOnboardingView()
-    //                        case .SignIn: IRASignInView()
-    //                        case .SignUp: IRASignUpView()
-    //                        case .ForgotPassword: IRAForgotPasswordView()
-    //                        case .Dashboard: IRADashboardView()
-    //                        case .Home: IRAHomeView()
-    //                        case .Search: IRASearchView()
-    //                        case .Profile: IRAProfileView()
-    //                        }
-    //                    }
-    //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-    //                } else {
-    //                    UIPilotHost(UIPilot(initial: hasCompletedOnboarding ? AppRoute.SignIn : AppRoute.Onboarding, debug: true)) { route in
-    //                        switch route {
-    //                        case .Onboarding: IRAOnboardingView()
-    //                        case .SignIn: IRASignInView()
-    //                        case .SignUp: IRASignUpView()
-    //                        case .ForgotPassword: IRAForgotPasswordView()
-    //                        case .Dashboard: IRADashboardView()
-    //                        case .Home: IRAHomeView()
-    //                        case .Search: IRASearchView()
-    //                        case .Profile: IRAProfileView()
-    //                        }
-    //                    }
-    //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-    //                }
-    //            }
-    //            .environment(\.colorScheme, .light)
-    //        }
-    //    }
 }

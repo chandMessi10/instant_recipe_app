@@ -6,15 +6,12 @@
 //
 
 import SwiftUI
-import UIPilot
 import LinkNavigator
 
 struct IRASignInView: View {
     let navigator: LinkNavigatorType
     @StateObject var viewModel: IRAAuthViewModel
     @State private var isPasswordVisible = false
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var pilot: UIPilot<AppRoute>
     
     init(navigator: LinkNavigatorType) {
         self._viewModel = StateObject(wrappedValue: IRAAuthViewModel())
@@ -128,14 +125,17 @@ struct IRASignInView: View {
                 }
                 .onChange(of: viewModel.currentDestination) { oldValue, newValue in
                     if newValue != nil  {
-                        appwriteSessionID = viewModel.sessionId
+//                        appwriteSessionID = viewModel.sessionId
                         navigator.replace(paths: ["home"], items: [:], isAnimated: true)
                     }
                 }
             }
             
             if viewModel.signInState == .error {
-                ToastView(message: $viewModel.apiResponseValue.wrappedValue, type: $viewModel.apiToastType.wrappedValue)
+                ToastView(
+                    message: $viewModel.apiResponseValue.wrappedValue
+//                    type: $viewModel.apiToastType.wrappedValue
+                )
                     .zIndex(1)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

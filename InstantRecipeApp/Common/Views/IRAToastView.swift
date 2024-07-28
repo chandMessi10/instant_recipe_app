@@ -11,19 +11,19 @@ import SwiftUI
 
 struct ToastView: View {
     let message: String
-    let type: ToastType
+//    let type: ToastType
     
     var body: some View {
         VStack {
             // Icon View
-            Image(systemName: iconName)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, maxHeight: 200)
-                .padding()
-                .background(Color.black.opacity(0.75))
-                .foregroundColor(.white)
-                .cornerRadius(10)
+//            Image(systemName: iconName)
+//                .resizable()
+//                .scaledToFit()
+//                .frame(maxWidth: .infinity, maxHeight: 200)
+//                .padding()
+//                .background(Color.black.opacity(0.75))
+//                .foregroundColor(.white)
+//                .cornerRadius(10)
             
             // Message Text
             Text(message)
@@ -38,14 +38,14 @@ struct ToastView: View {
         .padding() // Add some padding around the entire VStack
     }
     
-    private var iconName: String {
-        switch type {
-        case .success:
-            return "checkmark.circle.fill" // SF Symbol for success
-        case .error:
-            return "xmark.circle.fill" // SF Symbol for error
-        case .idle:
-            return "nosign"
-        }
-    }
+//    private var iconName: String {
+//        switch type {
+//        case .success:
+//            return "checkmark.circle.fill" // SF Symbol for success
+//        case .error:
+//            return "xmark.circle.fill" // SF Symbol for error
+//        case .idle:
+//            return "nosign"
+//        }
+//    }
 }

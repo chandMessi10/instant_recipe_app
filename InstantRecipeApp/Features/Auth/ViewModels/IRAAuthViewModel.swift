@@ -7,6 +7,7 @@
 
 import Foundation
 import Appwrite
+import SwiftUI
 
 class IRAAuthViewModel: ObservableObject {
     @Published var name: String = ""
@@ -27,6 +28,9 @@ class IRAAuthViewModel: ObservableObject {
     @Published var sessionId: String = ""
     @Published var apiToastType: ToastType = ToastType.idle
     @Published var currentDestination: Router.Destination? = nil
+    
+    // AppStorage property to keep appwrite session id
+    @AppStorage("appwriteSessionID") var appwriteSessionID: String = ""
     
     init() {
         self.client = ClientManager.shared.client
@@ -83,6 +87,7 @@ class IRAAuthViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.signInState = .success
                     self.sessionId = session.id
+                    self.appwriteSessionID = session.id
                     self.currentDestination = .home
                     self.apiToastType = ToastType.success
                 }
@@ -167,6 +172,7 @@ class IRAAuthViewModel: ObservableObject {
                 sessionId: sessionID
             )
             DispatchQueue.main.async {
+                self.appwriteSessionID = ""
                 self.signOutState = .success
                 self.apiToastType = ToastType.success
             }

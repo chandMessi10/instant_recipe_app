@@ -36,6 +36,13 @@ struct IRAProfileView: View {
         if profileViewModel.profileState == .error {
             HStack {
                 Text("Error getting profile ...")
+                Button {
+                    appwriteSessionID = ""
+                    navigator.replace(paths: ["signIn"], items: [:], isAnimated: true)
+                } label: {
+                    Text("Force Log Out")
+                }
+
             }
         }
         
@@ -97,10 +104,10 @@ struct IRAProfileView: View {
                             LazyVGrid(columns: Array(repeating: GridItem(spacing: 24), count: 2)) {
                                 ForEach(1...8, id: \.self) { item in
                                     IRARecipeItemView(
-                                        imageUrl: "",
+                                        recipeImageId: "",
                                         foodName: "Food Name",
-                                        details: "Food Details",
-                                        time: ">60 mins",
+                                        foodCategory: "Food Details",
+                                        time: 60,
                                         onTap: {}
                                     )
                                 }
@@ -117,7 +124,8 @@ struct IRAProfileView: View {
                 }
                 .onChange(of: authViewModel.signOutState) { oldValue, newValue in
                     if newValue == .success {
-                        appwriteSessionID = ""
+//                        appwriteSessionID = ""
+                        print("session id after sign out:: \(self.appwriteSessionID)")
                         navigator.replace(paths: ["signIn"], items: [:], isAnimated: true)
                     }
                 }
@@ -136,7 +144,10 @@ struct IRAProfileView: View {
                 .padding()
                 
                 if authViewModel.signOutState == .error {
-                    ToastView(message: $authViewModel.apiResponseValue.wrappedValue, type: $authViewModel.apiToastType.wrappedValue)
+                    ToastView(
+                        message: $authViewModel.apiResponseValue.wrappedValue
+//                        type: $authViewModel.apiToastType.wrappedValue
+                    )
                         .zIndex(1)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -174,6 +185,7 @@ struct IRAProfileView: View {
                     message: Text("Are you sure you want to sign out?"),
                     primaryButton: .default(Text("Yes")) {
                         Task {
+                            print("session id while logging out:: \(self.appwriteSessionID)")
                             await authViewModel.signOut(appwriteSessionID)
                         }
                     },

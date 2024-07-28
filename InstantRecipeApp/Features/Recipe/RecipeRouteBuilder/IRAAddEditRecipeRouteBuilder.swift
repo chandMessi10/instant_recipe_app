@@ -13,7 +13,7 @@ struct IRAAddEditRecipeRouteBuilder: RouteBuilder {
 
   var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
     { navigator, items, dependency in
-      return WrappingController(matchPath: matchPath, title: "") {
+      return WrappingController(matchPath: matchPath, title: "Add Recipe") {
         IRAAddEditRecipeView(navigator: navigator)
       }
     }

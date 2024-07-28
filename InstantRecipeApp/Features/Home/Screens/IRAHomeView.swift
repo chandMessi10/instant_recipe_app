@@ -10,8 +10,16 @@ import LinkNavigator
 
 struct IRAHomeView: View {
     let navigator: LinkNavigatorType
+    @StateObject var viewModel: IRAHomeViewModel
     @State private var selectedOptions: Set<String> = ["All"]
     let options = ["All", "Food", "Drink"]
+    
+    init(navigator: LinkNavigatorType) {
+        self._viewModel = StateObject(wrappedValue: IRAHomeViewModel())
+        self.navigator = navigator
+    }
+    
+    let gridItems = Array(repeating: GridItem(spacing: 24), count: 2)
     
     var body: some View {
         VStack {
@@ -52,59 +60,102 @@ struct IRAHomeView: View {
                 .font(.title3)
                 .padding(.horizontal, 10)
             }.padding(.horizontal, 16)
+            Spacer()
             
-            // Category Chips Option
-            HStack {
-                Text("Category")
-                    .font(.system(size: 17))
-                    .foregroundColor(Color(UIColor(hex: "#3E5481")))
-                    .fontWeight(.bold)
-                Spacer()
+            if viewModel.recipeListState == .loading {
+                VStack {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
+                        .padding(.bottom, 8)
+                    Text("Loading recipes...")
+                }
             }
-            .padding(16)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(options, id: \.self) { option in
-                        Button(action: {
-                            // Toggle the selected state of the option
-                            if selectedOptions.contains(option) {
-                                selectedOptions.remove(option)
-                            } else {
-                                selectedOptions.insert(option)
+            if viewModel.recipeListState == .success {
+                VStack {
+                    // Category Chips Option
+                    HStack {
+                        Text("Category")
+                            .font(.system(size: 17))
+                            .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(options, id: \.self) { option in
+                                Button(action: {
+                                    // Toggle the selected state of the option
+                                    if selectedOptions.contains(option) {
+                                        selectedOptions.remove(option)
+                                    } else {
+                                        selectedOptions.insert(option)
+                                    }
+                                }) {
+                                    Text(option)
+                                        .padding(EdgeInsets(top: 15, leading: 24, bottom: 15, trailing: 24))
+                                        .foregroundColor(selectedOptions.contains(option) ? .white : Color(UIColor(hex: "#9FA5C0")))
+                                        .background(selectedOptions.contains(option) ? Color(UIColor(hex: "#1FCC79")) : Color(UIColor(hex: "#F4F5F7")))
+                                        .cornerRadius(32)
+                                        .font(.system(size: 15))
+                                        .fontWeight(.bold)
+                                }
                             }
-                        }) {
-                            Text(option)
-                                .padding(EdgeInsets(top: 15, leading: 24, bottom: 15, trailing: 24))
-                                .foregroundColor(selectedOptions.contains(option) ? .white : Color(UIColor(hex: "#9FA5C0")))
-                                .background(selectedOptions.contains(option) ? Color(UIColor(hex: "#1FCC79")) : Color(UIColor(hex: "#F4F5F7")))
-                                .cornerRadius(32)
-                                .font(.system(size: 15))
-                                .fontWeight(.bold)
+                            Spacer()
                         }
+                        .padding(.horizontal, 16)
                     }
-                    Spacer()
+                    
+                    ScrollView {
+                        LazyVGrid(columns: gridItems) {
+                            ForEach(viewModel.documentsList, id: \.id) { document in
+                                // Extract data from the document
+                                let imageId = document.data["recipeImageId"]?.value as? String ?? ""
+                                let recipeName = document.data["recipeName"]?.value as? String ?? "N/A"
+                                let recipeCategory = document.data["recipeCategory"]?.value as? String ?? "N/A"
+                                let time = document.data["recipeCookingTime"]?.value as? Int ?? 0
+                                
+                                IRARecipeItemView(
+                                    recipeImageId: imageId,
+                                    foodName: recipeName,
+                                    foodCategory: recipeCategory,
+                                    time: time,
+                                    onTap: {
+                                        navigator.sheet(
+                                            paths: ["recipeDetail"],
+                                            items: [
+                                                "recipeName": recipeName,
+                                                "recipeImageId": imageId,
+                                                "recipeCookingTime": "\(time)",
+                                                "recipeDescription": document.data["recipeDescription"]?.value as? String ?? "N/A",
+                                                "chefName": document.data["chefName"]?.value as? String ?? "N/A",
+                                                "recipeCategory": recipeCategory
+                                            ],
+                                            isAnimated: true
+                                        )
+                                    }
+                                )
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                    }
                 }
-                .padding(.horizontal, 16)
             }
             
-            // Grid View of Recipes
-            ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(spacing: 24), count: 2), spacing: 16) {
-                    ForEach(1...20, id: \.self) { item in
-                        IRARecipeItemView(
-                            imageUrl: "",
-                            foodName: "Food Name",
-                            details: "Food Details",
-                            time: ">60 mins",
-                            onTap: {
-                                navigator.next(paths: ["recipeDetail"], items: [:], isAnimated: true)
-                            }
-                        )
+            if viewModel.recipeListState == .error {
+                VStack {
+                    Text("Error loading recipes...")
+                        .padding(.bottom, 8)
+                    IRACustomButton(buttonText: "Retry") {
+                        viewModel.callGetRecipes()
                     }
                 }
-                .padding(16)
             }
+            Spacer()
         }
     }
 }

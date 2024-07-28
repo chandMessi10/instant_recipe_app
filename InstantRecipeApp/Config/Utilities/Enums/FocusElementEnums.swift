@@ -8,7 +8,10 @@
 import Foundation
 
 enum FocusElement: Hashable {
+    case none
     case name
     case email
     case password
+    case foodName
+    case foodDescription
 }

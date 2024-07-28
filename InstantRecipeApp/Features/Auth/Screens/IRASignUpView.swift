@@ -100,7 +100,10 @@ struct IRASignUpView: View {
             }
             
             if viewModel.signUpState == .error || viewModel.signUpState == .success {
-                ToastView(message: $viewModel.apiResponseValue.wrappedValue, type: $viewModel.apiToastType.wrappedValue)
+                ToastView(
+                    message: $viewModel.apiResponseValue.wrappedValue
+//                    type: $viewModel.apiToastType.wrappedValue
+                )
                     .zIndex(1)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct IRARecipeItemView: View {
-    var imageUrl: String
+    var recipeImageId: String
     var foodName: String
-    var details: String
-    var time: String
-    var onTap: () -> Void // Closure property for tap action
+    var foodCategory: String
+    var time: Int
+    var onTap: () -> Void
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading) {
-                if imageUrl.isEmpty {
+                if recipeImageId.isEmpty {
                     Image(systemName: "fork.knife.circle")
                         .resizable()
                         .scaledToFit()
@@ -25,16 +25,35 @@ struct IRARecipeItemView: View {
                         .background(Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(16)
-                        .padding(.bottom, 16)
                 } else {
                     AsyncImage(
-                        url: URL(string: imageUrl)!,
-                        scale: 2
-                    )
-                    .frame(maxWidth: 180, maxHeight: 160)
-                    .background(Color.gray)
-                    .foregroundColor(.white)
-                    .cornerRadius(16)
+                        url: URL(string: "https://cloud.appwrite.io/v1/storage/buckets/6675b9630033239a91e6/files/\(recipeImageId)/view?project=666d6bec0028d0c01b84")!,
+                        scale: 4
+                    ) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: 180, maxHeight: 160)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(16)
+                        } else if phase.error != nil {
+                            // You can show an error view here if needed
+                            Text("Failed")
+                                .frame(maxWidth: 180, maxHeight: 160)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(16)
+                        } else {
+                            // Placeholder while loading
+                            ProgressView()
+                                .frame(maxWidth: 180, maxHeight: 160)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(16)
+                        }
+                    }
                 }
                 
                 Text(foodName)
@@ -43,14 +62,14 @@ struct IRARecipeItemView: View {
                     .foregroundColor(Color(UIColor(hex: "#3E5481")))
                 
                 HStack {
-                    Text(details)
+                    Text(foodCategory)
                         .font(.system(size: 10))
                         .fontWeight(.medium)
                         .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
                     Circle()
                         .frame(width: 5, height: 5)
                         .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
-                    Text(time)
+                    Text("\(time) min")
                         .font(.system(size: 12))
                         .fontWeight(.medium)
                         .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
@@ -84,16 +103,16 @@ struct IRARecipeItemView: View {
              */
         }
         .frame(height: 230)
-        .padding(.bottom, 16)
+        .padding(.bottom, 2)
     }
 }
 
 #Preview {
     IRARecipeItemView(
-        imageUrl: "https://avatars.githubusercontent.com/u/30414962?v=4",
+        recipeImageId: "https://avatars.githubusercontent.com/u/30414962?v=4",
         foodName: "Food Name",
-        details: "Food Details",
-        time: ">60 mins",
+        foodCategory: "Food Details",
+        time: 0,
         onTap: {
             // Your tap action here
             print("Recipe item tapped!")
