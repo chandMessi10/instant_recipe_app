@@ -16,6 +16,7 @@ class IRAHomeViewModel: ObservableObject {
     
     @Published var recipeListState: APIState = .initial
     @Published var apiResponseValue: String = ""
+    @Published var recipeCategory: String = "All"
     @Published var documentsList: [AppwriteModels.Document<[String: AnyCodable]>] = []
     
     init() {
@@ -26,11 +27,11 @@ class IRAHomeViewModel: ObservableObject {
     
     func callGetRecipes() {
         Task {
-            await getRecipes()
+            await getRecipes(recipeCategory: recipeCategory)
         }
     }
     
-    func getRecipes() async {
+    func getRecipes(recipeCategory: String) async {
         DispatchQueue.main.async {
             self.recipeListState = .loading
         }
@@ -38,7 +39,9 @@ class IRAHomeViewModel: ObservableObject {
             let documentList = try await databases.listDocuments(
                 databaseId: "666dd8f30018b4cd73b6",
                 collectionId: "667efc49001de65d16ef",
-                queries: []
+                queries: (recipeCategory != "All") ? [
+                    Query.equal("recipeCategory", value: recipeCategory)
+                ] : []
             )
             DispatchQueue.main.async {
                 self.documentsList = documentList.documents

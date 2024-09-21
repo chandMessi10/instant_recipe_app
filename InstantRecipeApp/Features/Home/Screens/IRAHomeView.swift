@@ -23,6 +23,7 @@ struct IRAHomeView: View {
     
     var body: some View {
         VStack {
+            /// Seach w/ profile
             HStack {
                 ZStack {
                     Rectangle()
@@ -60,6 +61,41 @@ struct IRAHomeView: View {
                 .font(.title3)
                 .padding(.horizontal, 10)
             }.padding(.horizontal, 16)
+            // Category Chips Option
+            VStack {
+                HStack {
+                    Text("Category")
+                        .font(.system(size: 17))
+                        .foregroundColor(Color(UIColor(hex: "#3E5481")))
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(options, id: \.self) { option in
+                            Button(action: {
+                                viewModel.recipeCategory = option
+                                Task {
+                                    await viewModel.getRecipes(recipeCategory: viewModel.recipeCategory)
+                                }
+                            }) {
+                                Text(option)
+                                    .padding(EdgeInsets(top: 15, leading: 24, bottom: 15, trailing: 24))
+                                    .foregroundColor(option.contains(viewModel.recipeCategory) ? .white : Color(UIColor(hex: "#9FA5C0")))
+                                    .background(option.contains(viewModel.recipeCategory) ? Color(UIColor(hex: "#1FCC79")) : Color(UIColor(hex: "#F4F5F7")))
+                                    .cornerRadius(32)
+                                    .font(.system(size: 15))
+                                    .fontWeight(.bold)
+                            }
+                        }
+                        Spacer()
+                    }
+                    .padding(.horizontal, 16)
+                }
+            }
             Spacer()
             
             if viewModel.recipeListState == .loading {
@@ -74,74 +110,42 @@ struct IRAHomeView: View {
             
             if viewModel.recipeListState == .success {
                 VStack {
-                    // Category Chips Option
-                    HStack {
-                        Text("Category")
-                            .font(.system(size: 17))
-                            .foregroundColor(Color(UIColor(hex: "#3E5481")))
-                            .fontWeight(.bold)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(options, id: \.self) { option in
-                                Button(action: {
-                                    // Toggle the selected state of the option
-                                    if selectedOptions.contains(option) {
-                                        selectedOptions.remove(option)
-                                    } else {
-                                        selectedOptions.insert(option)
-                                    }
-                                }) {
-                                    Text(option)
-                                        .padding(EdgeInsets(top: 15, leading: 24, bottom: 15, trailing: 24))
-                                        .foregroundColor(selectedOptions.contains(option) ? .white : Color(UIColor(hex: "#9FA5C0")))
-                                        .background(selectedOptions.contains(option) ? Color(UIColor(hex: "#1FCC79")) : Color(UIColor(hex: "#F4F5F7")))
-                                        .cornerRadius(32)
-                                        .font(.system(size: 15))
-                                        .fontWeight(.bold)
+                    if (viewModel.documentsList.isEmpty) {
+                        Text("Sorry No Recipes Found")
+                    } else {
+                        ScrollView {
+                            LazyVGrid(columns: gridItems) {
+                                ForEach(viewModel.documentsList, id: \.id) { document in
+                                    // Extract data from the document
+                                    let imageId = document.data["recipeImageId"]?.value as? String ?? ""
+                                    let recipeName = document.data["recipeName"]?.value as? String ?? "N/A"
+                                    let recipeCategory = document.data["recipeCategory"]?.value as? String ?? "N/A"
+                                    let time = document.data["recipeCookingTime"]?.value as? Int ?? 0
+                                    
+                                    IRARecipeItemView(
+                                        recipeImageId: imageId,
+                                        foodName: recipeName,
+                                        foodCategory: recipeCategory,
+                                        time: time,
+                                        onTap: {
+                                            navigator.sheet(
+                                                paths: ["recipeDetail"],
+                                                items: [
+                                                    "recipeName": recipeName,
+                                                    "recipeImageId": imageId,
+                                                    "recipeCookingTime": "\(time)",
+                                                    "recipeDescription": document.data["recipeDescription"]?.value as? String ?? "N/A",
+                                                    "chefName": document.data["chefName"]?.value as? String ?? "N/A",
+                                                    "recipeCategory": recipeCategory
+                                                ],
+                                                isAnimated: true
+                                            )
+                                        }
+                                    )
                                 }
                             }
-                            Spacer()
+                            .padding(.horizontal, 16)
                         }
-                        .padding(.horizontal, 16)
-                    }
-                    
-                    ScrollView {
-                        LazyVGrid(columns: gridItems) {
-                            ForEach(viewModel.documentsList, id: \.id) { document in
-                                // Extract data from the document
-                                let imageId = document.data["recipeImageId"]?.value as? String ?? ""
-                                let recipeName = document.data["recipeName"]?.value as? String ?? "N/A"
-                                let recipeCategory = document.data["recipeCategory"]?.value as? String ?? "N/A"
-                                let time = document.data["recipeCookingTime"]?.value as? Int ?? 0
-                                
-                                IRARecipeItemView(
-                                    recipeImageId: imageId,
-                                    foodName: recipeName,
-                                    foodCategory: recipeCategory,
-                                    time: time,
-                                    onTap: {
-                                        navigator.sheet(
-                                            paths: ["recipeDetail"],
-                                            items: [
-                                                "recipeName": recipeName,
-                                                "recipeImageId": imageId,
-                                                "recipeCookingTime": "\(time)",
-                                                "recipeDescription": document.data["recipeDescription"]?.value as? String ?? "N/A",
-                                                "chefName": document.data["chefName"]?.value as? String ?? "N/A",
-                                                "recipeCategory": recipeCategory
-                                            ],
-                                            isAnimated: true
-                                        )
-                                    }
-                                )
-                            }
-                        }
-                        .padding(.horizontal, 16)
                     }
                 }
             }

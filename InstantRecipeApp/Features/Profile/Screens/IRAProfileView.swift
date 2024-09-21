@@ -18,6 +18,8 @@ struct IRAProfileView: View {
     // AppStorage property to keep appwrite session id
     @AppStorage("appwriteSessionID") var appwriteSessionID: String = ""
     
+    let gridItems = Array(repeating: GridItem(spacing: 24), count: 2)
+    
     init(navigator: LinkNavigatorType) {
         self._authViewModel = StateObject(wrappedValue: IRAAuthViewModel())
         self._profileViewModel = StateObject(wrappedValue: IRAProfileViewModel())
@@ -100,18 +102,60 @@ struct IRAProfileView: View {
                     TabBarView(currentTab: $selectedTab)
                     
                     TabView(selection: $selectedTab) {
-                        ScrollView {
-                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 24), count: 2)) {
-                                ForEach(1...8, id: \.self) { item in
-                                    IRARecipeItemView(
-                                        recipeImageId: "",
-                                        foodName: "Food Name",
-                                        foodCategory: "Food Details",
-                                        time: 60,
-                                        onTap: {}
-                                    )
+                        VStack{
+                            if profileViewModel.recipeListState == .loading {
+                                VStack {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                        .scaleEffect(1.5)
+                                        .padding(.bottom, 8)
+                                    Text("Loading your recipes...")
                                 }
-                            }.padding(.horizontal, 16)
+                            }
+                            if profileViewModel.recipeListState == .success {
+                                ScrollView {
+                                    LazyVGrid(columns: gridItems) {
+                                        ForEach(profileViewModel.documentsList, id: \.id) { document in
+                                            // Extract data from the document
+                                            let imageId = document.data["recipeImageId"]?.value as? String ?? ""
+                                            let recipeName = document.data["recipeName"]?.value as? String ?? "N/A"
+                                            let recipeCategory = document.data["recipeCategory"]?.value as? String ?? "N/A"
+                                            let time = document.data["recipeCookingTime"]?.value as? Int ?? 0
+                                            
+                                            IRARecipeItemView(
+                                                recipeImageId: imageId,
+                                                foodName: recipeName,
+                                                foodCategory: recipeCategory,
+                                                time: time,
+                                                onTap: {
+                                                    navigator.sheet(
+                                                        paths: ["recipeDetail"],
+                                                        items: [
+                                                            "recipeName": recipeName,
+                                                            "recipeImageId": imageId,
+                                                            "recipeCookingTime": "\(time)",
+                                                            "recipeDescription": document.data["recipeDescription"]?.value as? String ?? "N/A",
+                                                            "chefName": document.data["chefName"]?.value as? String ?? "N/A",
+                                                            "recipeCategory": recipeCategory
+                                                        ],
+                                                        isAnimated: true
+                                                    )
+                                                }
+                                            )
+                                        }
+                                    }
+                                    .padding(.horizontal, 16)
+                                }
+                            }
+                            if profileViewModel.recipeListState == .error {
+                                VStack {
+                                    Text("Error loading recipes...")
+                                        .padding(.bottom, 8)
+                                    IRACustomButton(buttonText: "Retry") {
+                                        
+                                    }
+                                }
+                            }
                         }.tag(0)
                         ScrollView {
                             Text("Coming Soon...").font(.title)
@@ -124,7 +168,6 @@ struct IRAProfileView: View {
                 }
                 .onChange(of: authViewModel.signOutState) { oldValue, newValue in
                     if newValue == .success {
-//                        appwriteSessionID = ""
                         print("session id after sign out:: \(self.appwriteSessionID)")
                         navigator.replace(paths: ["signIn"], items: [:], isAnimated: true)
                     }
@@ -146,7 +189,6 @@ struct IRAProfileView: View {
                 if authViewModel.signOutState == .error {
                     ToastView(
                         message: $authViewModel.apiResponseValue.wrappedValue
-//                        type: $authViewModel.apiToastType.wrappedValue
                     )
                         .zIndex(1)
                         .onAppear {

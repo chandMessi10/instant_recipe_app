@@ -73,24 +73,24 @@ struct IRASignInView: View {
                             // call sign in method
                         }
                     )
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 16)
                     .onChange(of: $viewModel.password.wrappedValue) { _, _ in
                         viewModel.validateSignInPassword()
                     }
                     .focused($focusedField, equals: .password)
                     
-                    HStack {
-                        Spacer()
-                        NavigationLink(
-                            destination: IRAForgotPasswordView()
-                        ) {
-                            Text("Forgot Password?")
-                                .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
-                                .font(.headline)
-                        }
-                        .padding(.vertical, 16)
-                    }
-                    .padding(.bottom, 16)
+//                    HStack {
+//                        Spacer()
+//                        NavigationLink(
+//                            destination: IRAForgotPasswordView()
+//                        ) {
+//                            Text("Forgot Password?")
+//                                .foregroundColor(Color(UIColor(hex: "#9FA5C0")))
+//                                .font(.headline)
+//                        }
+//                        .padding(.vertical, 16)
+//                    }
+//                    .padding(.bottom, 16)
                     
                     IRACustomButton(
                         buttonText: "Sign In",

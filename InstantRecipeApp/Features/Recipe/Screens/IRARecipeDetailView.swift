@@ -116,7 +116,7 @@ struct IRARecipeDetailView: View {
                         Spacer()
                     }
                     .padding(.bottom, 4)
-                    
+                     
                     Divider()
                         .padding(.bottom, 4)
                     
